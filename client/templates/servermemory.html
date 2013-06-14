@@ -1,0 +1,28 @@
+<!-- Data block -->
+<article class="span4 data-block">
+	<div class="data-container">
+		<header>
+			<h2><span class="awe-leaf"></span> Memory Usage</h2>
+		</header>
+		<section>
+			<div class="row-fluid">
+				<table class="table table-striped">
+					<tr>
+						<th>rss</th>
+						<td>{{serverStatus.memory.rss/1048576}}</td>
+					</tr>
+					<tr>
+						<th>Heap Total</th>
+						<td>{{serverStatus.memory.heapTotal/1048576}}</td>
+					</tr>
+					<tr>
+						<th>Heap Used</th>
+						<td>{{serverStatus.memory.heapUsed/1048576}}</td>
+					</tr>
+				</table>
+			</div>
+		</section>
+		<footer class="info"><p>Đơn vị tính: MB</p></footer>
+	</div>
+</article>
+<!-- /Data block -->

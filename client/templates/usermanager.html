@@ -1,0 +1,58 @@
+<div ng-show="authenticated">
+	<ng-include src="'header.html'"></ng-include>
+	<section class="container" id="main">
+		<ng-include src="'sidebar.html'"></ng-include>
+		<div class="content-block" role="main">
+
+			<!-- Page header -->
+			<article class="page-header">
+				<h1>User Manager</h1>
+			</article>
+			<!-- /Page header -->
+			
+			<div class="row">
+				<!-- Data block -->
+				<article class="span12 data-block">
+					<div class="data-container">
+						<header>
+							<h2><span class="awe-user"></span> All users</h2>
+							<ul class="data-header-actions">
+								<li>
+									<a class="btn btn-alt btn-inverse" href="/user/create">Create New User</a>
+								</li>
+							</ul>
+						</header>
+						<section>
+							<div class="row-fluid">
+								<div class="span12">
+									<table class="table table-stripped table-hover">
+									<thead>
+										<tr>
+											<th>Username</th>
+											<th>Displayname</th>
+											<th>Date create</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody>
+									<tr ng-repeat="user in users">
+										<td><a href="/user/{{user.userId}}">{{user.userId}}</a></td>
+										<td>{{user.displayname}}</td>
+										<td>{{user.createdAt}}</td>
+										<td><a href="/user/{{user.userId}}" class="btn btn-primary">Edit</a> <a href="javascript:;" ng-click="deleteUser($index)" class="btn btn-danger">Delete</a></td>
+									</tr>
+									</tbody>
+								</table>
+								</div>
+							</div>
+						</section>
+						<!-- <footer>
+							<input class="btn btn-alt btn-large btn-danger" type="submit" value="Save Change"/>
+						</footer> -->
+					</div>
+				</article>
+				<!-- /Data block -->
+			</div>
+		</div>
+	</section>
+</div>

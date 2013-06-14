@@ -1,0 +1,30 @@
+<div class="navigation-block affix-top">
+  <!-- User profile -->
+  <section class="user-profile">
+    <figure>
+      <figcaption>
+        <strong><a href="/user/{{sharedata.username}}" class=""> {{sharedata.displayname}} </a></strong>
+        <ul>
+          <li><a class="btn btn-primary btn-flat" href="/user/{{sharedata.username}}" data-original-title="Account settings">Account settings</a></li>
+          <li><a class="btn btn-primary btn-flat" href="javascript:;" ng-click="sharedata.logout()" data-original-title="Logout">Logout</a></li>
+        </ul>
+      </figcaption>
+    </figure>
+  </section>
+  <!-- /User profile -->
+  <!-- Main navigation -->
+  <nav class="main-navigation" role="navigation">
+    <ul>
+      <li ng-class="{current: location.path() == '/app'}"><a href="/app" class="no-submenu"><span class="awe-home"></span>Dashboard</a></li>
+      <li ng-class="{current: location.path().indexOf(menu.key) > -1}" ng-repeat="menu in sharedata.menus"><a ng-href='/{{menu.key}}'><span class="awe-{{menu.key}}"></span>{{menu.title}}</a></li>
+    </ul>
+  </nav>
+  <!-- /Main navigation -->
+  <section class="side-note">
+    <div class="side-note-container">
+      <h2>Chú thích</h2>
+      <p>Đơn vị tính loằng ngoằng, đơn giản là Heap Used ~ Heap Total ~ RSS mà cao bằng cây ớt hết thì bác phát mỗi đứa 1 trái ớt. Hết...</p>
+    </div>
+    <div class="side-note-bottom"></div>
+  </section>
+</div>

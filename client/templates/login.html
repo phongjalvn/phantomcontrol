@@ -1,0 +1,29 @@
+<!-- Main page container -->
+<section class="container login" role="main" ng-controller="AuthCtrl">
+	
+	<div class="data-block">
+		<form method="post">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label" for="login">Username</label>
+					<div class="controls">
+						<input id="icon" type="text" placeholder="Your username" name="login" ng-model="user" required>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="password">Password</label>
+					<div class="controls">
+						<input id="password" type="password" placeholder="Password" name="password" ng-model="password" required>
+					</div>
+				</div>
+				<div class="control-group" ng-show="showError">
+					<p class="text-error">{{errorMsg}}</p>
+				</div>
+				<div class="form-actions">
+					<button class="btn btn-large btn-inverse btn-alt" type="submit" ng-click="processAuth()"><span class="awe-signin"></span> Log in</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</section>
+<!-- /Main page container -->

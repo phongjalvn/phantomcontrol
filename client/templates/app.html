@@ -1,0 +1,20 @@
+<div ng-show="authenticated">
+	<ng-include src="'header.html'"></ng-include>
+	<section class="container" id="main">
+		<ng-include src="'sidebar.html'"></ng-include>
+		<div class="content-block" role="main">
+
+			<!-- Page header -->
+			<article class="page-header">
+				<h1>Dashboard</h1>
+			</article>
+			<!-- /Page header -->
+			
+			<div class="row">
+				<ng-include src="'serverstatus.html'"></ng-include>
+				<ng-include src="'servermemory.html'"></ng-include>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</section>
+</div>

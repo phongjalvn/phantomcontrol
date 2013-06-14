@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="exampleApp">
+  <head>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <link href="/assets/main/1371113548128.css" media="screen" rel="stylesheet" type="text/css"><script src="/assets/main/1371113548128.js" type="text/javascript"></script><script type="text/ng-template" id="app.html"><div ng-show="authenticated">
+	<ng-include src="'header.html'"></ng-include>
+	<section class="container" id="main">
+		<ng-include src="'sidebar.html'"></ng-include>
+		<div class="content-block" role="main">
+
+			<!-- Page header -->
+			<article class="page-header">
+				<h1>Dashboard</h1>
+			</article>
+			<!-- /Page header -->
+			
+			<div class="row">
+				<!-- Data block -->
+				<article class="span8 data-block">
+					<div class="data-container">
+						<header>
+							<h2><span class="awe-signal"></span> Server Status</h2>
+						</header>
+						<section>
+							<div class="row-fluid">
+								<table class="table table-striped">
+									<tr>
+										<th>Platform - arch</th>
+										<td>{{serverStatus.platform}} - {{serverStatus.arch}}</td>
+									</tr>
+									<tr>
+										<th>Nodejs Version</th>
+										<td>{{serverStatus.version}}</td>
+									</tr>
+									<tr>
+										<th>Uptime</th>
+										<td>{{serverStatus.uptime}}</td>
+									</tr>
+									<tr>
+										<th>Serer Time</th>
+										<td>{{serverStatus.servertime}}</td>
+									</tr>
+								</table>
+							</div>
+						</section>
+						<footer class="info"><p>Đơn vị tính thời gian: nanosecond (-.-!)</p></footer>
+					</div>
+				</article>
+				<!-- /Data block -->
+				<!-- Data block -->
+				<article class="span4 data-block">
+					<div class="data-container">
+						<header>
+							<h2><span class="awe-leaf"></span> Memory Usage</h2>
+						</header>
+						<section>
+							<div class="row-fluid">
+								<table class="table table-striped">
+									<tr>
+										<th>rss</th>
+										<td>{{serverStatus.memory.rss/1048576}}</td>
+									</tr>
+									<tr>
+										<th>Heap Total</th>
+										<td>{{serverStatus.memory.heapTotal/1048576}}</td>
+									</tr>
+									<tr>
+										<th>Heap Used</th>
+										<td>{{serverStatus.memory.heapUsed/1048576}}</td>
+									</tr>
+								</table>
+							</div>
+						</section>
+						<footer class="info"><p>Đơn vị tính: MB</p></footer>
+					</div>
+				</article>
+				<!-- /Data block -->
+				<!-- Data block -->
+				<article class="span12 data-block">
+					<div class="data-container">
+						<header>
+							<h2><span class="awe-google-plus"></span> Google Scraper Engine</h2>
+							<ul class="data-header-actions">
+								<li>
+									<a class="btn btn-alt btn-inverse" ng-click="startGoogleEngine()">Start Engine</a>
+								</li>
+								<li>
+									<a class="btn btn-alt btn-inverse" ng-click="getProxy()">Get Proxy</a>
+								</li>
+							</ul>
+						</header>
+						<section>
+							<div class="row-fluid">
+								<div ng-repeat="link in googlelinks">
+									<h4><a href="{{link.link}}">{{link.title}}</a></h4>
+									<blockquote>
+										<p>{{link.description}}</p>
+										<small><a href="{{link.link}}">Direct Link</a> - Created at {{link.createdAt}}</small>
+									</blockquote>
+								</div>
+							</div>
+						</section>
+						<footer class="info"><p>Chỉ sử dụng chức năng này tối đa 4 lần/ngày</p></footer>
+					</div>
+				</article>
+				<!-- /Data block -->
+				<article class="span12 data-block">
+					<div class="data-container">
+						<header>
+							<h2><span class="awe-cloud"></span> 50 Lastest Proxies</h2>
+							<ul class="data-header-actions">
+								<li>
+									<a class="btn btn-alt btn-inverse" ng-click="checkProxies()">Check unchecked</a>
+								</li>
+								<li>
+									<a class="btn btn-alt btn-inverse" ng-click="checkLive()">Recheck live</a>
+								</li>
+								<li>
+									<a class="btn btn-alt btn-inverse" ng-click="checkDead()">Recheck dead</a>
+								</li>
+							</ul>
+						</header>
+						<section>
+							<div class="row-fluid">
+								<table class="table table-striped">
+									<tr>
+										<th>Title</th>
+										<th>Description</th>
+										<th>Server</th>
+										<th>Status</th>
+										<th>Checked Time</th>
+										<th>Time Added</th>
+									</tr>
+									<tr ng-repeat="proxy in proxies">
+										<td>{{proxy.ip}}</td>
+										<td>{{proxy.port}}</td>
+										<td>{{proxy.server}}</td>
+										<td>{{proxy.status}}</td>
+										<td>{{proxy.checkedTime}}</td>
+										<td>{{proxy.createdAt}}</td>
+									</tr>
+								</table>
+							</div>
+						</section>
+						<footer class="info"><p>Mục tiêu: 1.000.000 Ip</p></footer>
+					</div>
+				</article>
+				<!-- /Data block -->
+				<div class="clear"></div>
+			</div>
+		</div>
+	</section>
+</div></script><script type="text/ng-template" id="header.html"><header class="container" id="header">
+  <!-- Main page logo -->
+  <h1><a href="/" class="brand">Phantom Control</a></h1>
+  <!-- Main page headline -->
+  <p>One does not simple control the Phantom Platform</p>
+  <!-- Alternative navigation -->
+  <nav>
+    <ul>
+      <li><a href="javascript:;" ng-click="sharedata.logout()">Logout</a></li>
+    </ul>
+  </nav>
+  <!-- /Alternative navigation -->
+</header></script><script type="text/ng-template" id="login.html"><!-- Main page container -->
+<section class="container login" role="main" ng-controller="AuthCtrl">
+	
+	<div class="data-block">
+		<form method="post">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label" for="login">Username</label>
+					<div class="controls">
+						<input id="icon" type="text" placeholder="Your username" name="login" ng-model="user" required>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="password">Password</label>
+					<div class="controls">
+						<input id="password" type="password" placeholder="Password" name="password" ng-model="password" required>
+					</div>
+				</div>
+				<div class="control-group" ng-show="showError">
+					<p class="text-error">{{errorMsg}}</p>
+				</div>
+				<div class="form-actions">
+					<button class="btn btn-large btn-inverse btn-alt" type="submit" ng-click="processAuth()"><span class="awe-signin"></span> Log in</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</section>
+<!-- /Main page container -->
+</script><script type="text/ng-template" id="sidebar.html"><div class="navigation-block affix-top">
+  <!-- User profile -->
+  <section class="user-profile">
+    <figure>
+      <figcaption>
+        <strong><a href="/user/{{sharedata.username}}" class=""> {{sharedata.displayname}} </a></strong>
+        <ul>
+          <li><a class="btn btn-primary btn-flat" href="/user/{{sharedata.username}}" data-original-title="Account settings">Account settings</a></li>
+          <li><a class="btn btn-primary btn-flat" href="javascript:;" ng-click="sharedata.logout()" data-original-title="Logout">Logout</a></li>
+        </ul>
+      </figcaption>
+    </figure>
+  </section>
+  <!-- /User profile -->
+  <!-- Main navigation -->
+  <nav class="main-navigation" role="navigation">
+    <ul>
+      <li ng-class="{current: location.path() == '/app'}"><a href="/app" class="no-submenu"><span class="awe-home"></span>Dashboard</a></li>
+      <li ng-class="{current: location.path().indexOf(menu.key) > -1}" ng-repeat="menu in sharedata.menus"><a ng-href='/{{menu.key}}'><span class="awe-{{menu.key}}"></span>{{menu.title}}</a></li>
+    </ul>
+  </nav>
+  <!-- /Main navigation -->
+  <section class="side-note">
+    <div class="side-note-container">
+      <h2>Chú thích</h2>
+      <p>Đơn vị tính loằng ngoằng, đơn giản là Heap Used ~ Heap Total ~ RSS gần gần bằng nhau hết thì bác phát mỗi đứa 1 trái ớt. Hết...</p>
+    </div>
+    <div class="side-note-bottom"></div>
+  </section>
+</div></script><script type="text/ng-template" id="useredit.html"><div ng-show="authenticated">
+	<ng-include src="'header.html'"></ng-include>
+	<section class="container" id="main">
+		<ng-include src="'sidebar.html'"></ng-include>
+		<div class="content-block" role="main">
+	
+			<!-- Page header -->
+			<article class="page-header">
+				<h1>Editing {{username}}</h1>
+			</article>
+			<!-- /Page header -->
+			
+			<div class="row">
+				<!-- Data block -->
+				<article class="span12 data-block">
+					<div class="data-container">
+						<section>
+							<div class="row-fluid">
+								<div class="span12">
+									<form class="form-horizontal" ng-submit="updateUser()">
+										<fieldset>
+											<div class="control-group">
+												<label class="control-label" for="username" required>Username</label>
+												<div class="controls">
+													<input id="username" class="input-xlarge" type="text" ng-model="username">
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="displayname" required>Display Name</label>
+												<div class="controls">
+													<input id="displayname" class="input-xlarge" type="text" ng-model="displayname">
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="password1" required>Password</label>
+												<div class="controls">
+													<input id="password1" class="input-xlarge" type="password" ng-model="password">
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="password2" required>Password(again)</label>
+												<div class="controls">
+													<input id="password2" class="input-xlarge" type="password" ng-model="password2">
+												</div>
+											</div>
+											<div class="form-actions">
+												<input class="btn btn-alt btn-large btn-danger" type="submit" value="Save User"/>
+											</div>
+										</fieldset>
+									</form>
+								</div>
+							</div>
+						</section>
+						<!-- <footer class="info">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam blandit, dolor mollis adipiscing elementum, ipsum turpis euismod tellus, vitae mollis velit leo id nisi.</p>
+						</footer> -->
+					</div>
+				</article>
+				<!-- /Data block -->
+			</div>
+		</div>
+	</section>
+</div></script><script type="text/ng-template" id="usermanager.html"><div ng-show="authenticated">
+	<ng-include src="'header.html'"></ng-include>
+	<section class="container" id="main">
+		<ng-include src="'sidebar.html'"></ng-include>
+		<div class="content-block" role="main">
+
+			<!-- Page header -->
+			<article class="page-header">
+				<h1>User Manager</h1>
+			</article>
+			<!-- /Page header -->
+			
+			<div class="row">
+				<!-- Data block -->
+				<article class="span12 data-block">
+					<div class="data-container">
+						<header>
+							<h2><span class="awe-user"></span> All users</h2>
+							<ul class="data-header-actions">
+								<li>
+									<a class="btn btn-alt btn-inverse" href="/user/create">Create New User</a>
+								</li>
+							</ul>
+						</header>
+						<section>
+							<div class="row-fluid">
+								<div class="span12">
+									<table class="table table-stripped table-hover">
+									<thead>
+										<tr>
+											<th>Username</th>
+											<th>Displayname</th>
+											<th>Date create</th>
+										</tr>
+									</thead>
+									<tbody>
+									<tr ng-repeat="user in users">
+										<td><a href="/user/{{user.userId}}">{{user.userId}}</a></td>
+										<td>{{user.displayname}}</td>
+										<td>{{user.createdAt}}</td>
+									</tr>
+									</tbody>
+								</table>
+								</div>
+							</div>
+						</section>
+						<!-- <footer>
+							<input class="btn btn-alt btn-large btn-danger" type="submit" value="Save Change"/>
+						</footer> -->
+					</div>
+				</article>
+				<!-- /Data block -->
+			</div>
+		</div>
+	</section>
+</div></script><script type="text/ng-template" id="usernew.html"><div ng-show="authenticated">
+	<ng-include src="'header.html'"></ng-include>
+	<section class="container" id="main">
+		<ng-include src="'sidebar.html'"></ng-include>
+		<div class="content-block" role="main">
+			<!-- Page header -->
+			<article class="page-header">
+				<h1>Create new user</h1>
+			</article>
+			<!-- /Page header -->
+			
+			<div class="row">
+				<!-- Data block -->
+				<article class="span12 data-block">
+					<div class="data-container">
+						<section>
+							<div class="row-fluid">
+								<div class="span12">
+									<form class="form-horizontal" ng-submit="createUser()">
+										<fieldset>
+											<div class="control-group">
+												<label class="control-label" for="username" required>Username</label>
+												<div class="controls">
+													<input id="username" class="input-xlarge" type="text" ng-model="username">
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="displayname" required>Display Name</label>
+												<div class="controls">
+													<input id="displayname" class="input-xlarge" type="text" ng-model="displayname">
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="password1" required>Password</label>
+												<div class="controls">
+													<input id="password1" class="input-xlarge" type="password" ng-model="password">
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="password2" required>Password(again)</label>
+												<div class="controls">
+													<input id="password2" class="input-xlarge" type="password" ng-model="password2">
+												</div>
+											</div>
+											<div class="form-actions">
+												<input class="btn btn-alt btn-large btn-danger" type="submit" value="Save User"/>
+											</div>
+										</fieldset>
+									</form>
+								</div>
+							</div>
+						</section>
+						<!-- <footer class="info">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam blandit, dolor mollis adipiscing elementum, ipsum turpis euismod tellus, vitae mollis velit leo id nisi.</p>
+						</footer> -->
+					</div>
+				</article>
+				<!-- /Data block -->
+			</div>
+		</div>
+	</section>
+</div></script>
+    <meta charset="utf-8"/>
+    <title>Phantom Control</title>
+    <meta name="Expires" content="Tue, 01 Jun 1999 19:58:02 GMT"/>
+  </head>
+  <body>
+  	<div ng-view></div>
+  </body>
+</html>

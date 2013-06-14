@@ -1,0 +1,32 @@
+<!-- Data block -->
+<article class="span8 data-block">
+	<div class="data-container">
+		<header>
+			<h2><span class="awe-signal"></span> Server Status</h2>
+		</header>
+		<section>
+			<div class="row-fluid">
+				<table class="table table-striped">
+					<tr>
+						<th>Platform - arch</th>
+						<td>{{serverStatus.platform}} - {{serverStatus.arch}}</td>
+					</tr>
+					<tr>
+						<th>Nodejs Version</th>
+						<td>{{serverStatus.version}}</td>
+					</tr>
+					<tr>
+						<th>Uptime</th>
+						<td>{{serverStatus.uptime}}</td>
+					</tr>
+					<tr>
+						<th>Serer Time</th>
+						<td>{{serverStatus.servertime}}</td>
+					</tr>
+				</table>
+			</div>
+		</section>
+		<footer class="info"><p>Đơn vị tính thời gian: nanosecond (-.-!)</p></footer>
+	</div>
+</article>
+<!-- /Data block -->

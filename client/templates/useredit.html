@@ -1,0 +1,63 @@
+<div ng-show="authenticated">
+	<ng-include src="'header.html'"></ng-include>
+	<section class="container" id="main">
+		<ng-include src="'sidebar.html'"></ng-include>
+		<div class="content-block" role="main">
+	
+			<!-- Page header -->
+			<article class="page-header">
+				<h1>Editing {{username}}</h1>
+			</article>
+			<!-- /Page header -->
+			
+			<div class="row">
+				<!-- Data block -->
+				<article class="span12 data-block">
+					<div class="data-container">
+						<section>
+							<div class="row-fluid">
+								<div class="span12">
+									<form class="form-horizontal" ng-submit="updateUser()">
+										<fieldset>
+											<div class="control-group">
+												<label class="control-label" for="username" required>Username</label>
+												<div class="controls">
+													<input id="username" class="input-xlarge" type="text" ng-model="username">
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="displayname" required>Display Name</label>
+												<div class="controls">
+													<input id="displayname" class="input-xlarge" type="text" ng-model="displayname">
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="password1" required>Password</label>
+												<div class="controls">
+													<input id="password1" class="input-xlarge" type="password" ng-model="password">
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="password2" required>Password(again)</label>
+												<div class="controls">
+													<input id="password2" class="input-xlarge" type="password" ng-model="password2">
+												</div>
+											</div>
+											<div class="form-actions">
+												<input class="btn btn-alt btn-large btn-danger" type="submit" value="Save User"/>
+											</div>
+										</fieldset>
+									</form>
+								</div>
+							</div>
+						</section>
+						<!-- <footer class="info">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam blandit, dolor mollis adipiscing elementum, ipsum turpis euismod tellus, vitae mollis velit leo id nisi.</p>
+						</footer> -->
+					</div>
+				</article>
+				<!-- /Data block -->
+			</div>
+		</div>
+	</section>
+</div>
