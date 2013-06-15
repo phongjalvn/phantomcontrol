@@ -25,6 +25,9 @@
 						<section>
 							<div class="row-fluid">
 								<div class="span12">
+									<div class="form_inline">
+										<label>Search: <input type="text" ng-model="search"></label>
+									</div>
 									<table class="table table-stripped table-hover">
 									<thead>
 										<tr>
@@ -35,7 +38,7 @@
 										</tr>
 									</thead>
 									<tbody>
-									<tr ng-repeat="user in users">
+									<tr ng-repeat="user in users|filter:search">
 										<td><a href="/user/{{user.userId}}">{{user.userId}}</a></td>
 										<td>{{user.displayname}}</td>
 										<!-- <td>{{user.createdAt}}</td> -->

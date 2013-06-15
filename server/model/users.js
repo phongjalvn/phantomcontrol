@@ -8,7 +8,7 @@ exports.make = function(des,chan,ss) {
   return {
     //must have a poll function for now. may have other update models
     poll: function(p) {
-      User.find(function(error,users){
+      User.find().select('userId displayname').exec(function(error,users){
         if(!error){
           chan(users);
         } else {

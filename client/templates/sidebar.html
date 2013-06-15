@@ -16,7 +16,7 @@
   <nav class="main-navigation" role="navigation">
     <ul>
       <li ng-class="{current: location.path() == '/dashboard'}"><a href="/dashboard" class="no-submenu"><span class="awe-home"></span>Dashboard</a></li>
-      <li ng-class="{current: location.path().indexOf(menu.key) > -1}" ng-repeat="menu in sharedata.menus"><a ng-href='/{{menu.key}}'><span class="awe-{{menu.key}}"></span>{{menu.title}}</a></li>
+      <li ng-class="{current: location.path().indexOf(menu.key) > -1}" ng-repeat="menu in sharedata.menus"><a ng-href='/{{menu.key}}'><span class="awe-{{menu.icon}}"></span>{{menu.title}}</a></li>
     </ul>
   </nav>
   <!-- /Main navigation -->
