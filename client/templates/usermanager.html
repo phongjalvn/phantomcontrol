@@ -30,7 +30,7 @@
 										<tr>
 											<th>Username</th>
 											<th>Displayname</th>
-											<th>Date create</th>
+											<!-- <th>Date create</th> -->
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -38,17 +38,17 @@
 									<tr ng-repeat="user in users">
 										<td><a href="/user/{{user.userId}}">{{user.userId}}</a></td>
 										<td>{{user.displayname}}</td>
-										<td>{{user.createdAt}}</td>
-										<td><a href="/user/{{user.userId}}" class="btn btn-primary">Edit</a> <a href="javascript:;" ng-click="deleteUser($index)" class="btn btn-danger">Delete</a></td>
+										<!-- <td>{{user.createdAt}}</td> -->
+										<td>
+											<a href="/user/{{user.userId}}" class="btn"><span class="awe-pencil"></span></a>
+											<a href="javascript:;" ng-click="deleteUser($index)" class="btn btn-danger"><span class="awe-trash"></span></a>
+										</td>
 									</tr>
 									</tbody>
 								</table>
 								</div>
 							</div>
 						</section>
-						<!-- <footer>
-							<input class="btn btn-alt btn-large btn-danger" type="submit" value="Save Change"/>
-						</footer> -->
 					</div>
 				</article>
 				<!-- /Data block -->

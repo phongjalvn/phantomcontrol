@@ -4,12 +4,12 @@ angular.module('exampleApp', ['ssAngular'])
   authProvider.loginPath('/login');
   $routeProvider.
   when('/login', {controller:'AuthCtrl', templateUrl:'login.html'}).
-  when('/app', {controller:'SSCtrl', templateUrl:'app.html'}).
+  when('/dashboard', {controller:'DashboardCtrl', templateUrl:'app.html'}).
   when('/user', {controller:'UserCtrl', templateUrl:'usermanager.html'}).
   when('/user/create', {controller:'UserCtrl', templateUrl:'usernew.html'}).
   when('/user/:userid', {controller:'UserCtrl', templateUrl:'useredit.html'}).
-  when('/file', {controller:'UserCtrl', templateUrl:'app.html'}).
-  otherwise({redirectTo:'/app'});
+  when('/file', {controller:'DashboardCtrl', templateUrl:'app.html'}).
+  otherwise({redirectTo:'/dashboard'});
   $locationProvider.html5Mode(true);
 }])
 .factory('ShareData', function(rpc, auth, $location) {
@@ -26,7 +26,7 @@ angular.module('exampleApp', ['ssAngular'])
     }
   };
 })
-.controller('SSCtrl',['$scope','$location','pubsub','rpc','model','auth','ShareData', function($scope,$location,pubsub,rpc,model,auth,ShareData) {
+.controller('DashboardCtrl',['$scope','$location','pubsub','rpc','model','auth','ShareData', function($scope,$location,pubsub,rpc,model,auth,ShareData) {
     $scope.location = $location; // Access $location inside the view.
     $scope.sharedata = ShareData; // Access Share Data
     // Update server status
@@ -37,55 +37,28 @@ angular.module('exampleApp', ['ssAngular'])
     $scope.location = $location; // Access $location inside the view.
     $scope.sharedata = ShareData; // Access Share Data
     $scope.username = $routeParams.userid;
+
+    $scope.linkModel('users','users');
     // If no userid, this must be create user page
     if ($routeParams.userid) {
       $scope.displayname = rpc('user.getName', $routeParams.userid);
     };
-
-    if ($location.path() == '/user') {
-      $scope.users = rpc('user.getUsers');
-    };
-
+    
+    // Update User
     $scope.updateUser = function(){
-      ss.rpc('user.updateUser', $scope.username, $scope.password, $scope.password2, $scope.displayname.$$v, function(msg){
-        if (msg==true) {
-          $.jGrowl('Saved - '+$scope.displayname.$$v, {
-            header: "Update User",
-            speed: 'slow',
-            theme: 'success'
-          });
-        } else {
-          $.jGrowl('Error when saving - '+$scope.displayname.$$v, {
-            header: "Update User",
-            speed: 'slow',
-            theme: 'danger'
-          });
-        };
-      });
+      rpc('user.updateUser', $scope.username, $scope.password, $scope.password2, $scope.displayname.$$v);
+      $location.path('/user');
     };
 
     // Create User
     $scope.createUser = function(){
-      ss.rpc('user.createUser', $scope.username, $scope.password, $scope.password2, $scope.displayname, function(msg){
-        if (msg==true) {
-          $.jGrowl('Created - '+$scope.displayname, {
-            header: "Create User",
-            speed: 'slow',
-            theme: 'success'
-          });
-        } else {
-          $.jGrowl('Error when create new user', {
-            header: "Create User",
-            speed: 'slow',
-            theme: 'danger'
-          });
-        };
-      });
+      rpc('user.createUser', $scope.username, $scope.password, $scope.password2, $scope.displayname);
+      $location.path('/user');
     };
 
     // Delete User
     $scope.deleteUser = function(index){
-      ss.rpc('user.deleteUser',$scope.users.$$v[index].userId);
+      rpc('user.deleteUser',$scope.users[index].userId);
     }
 
   }])
@@ -97,7 +70,7 @@ angular.module('exampleApp', ['ssAngular'])
       ShareData.username= rpc('user.getCurrentUser');
       ShareData.displayname= rpc('user.getName');
       $log.log(reason);
-      var newPath = '/app';
+      var newPath = '/dashboard';
       if($scope.redirectPath) {
         newPath = $scope.redirectPath;
       }

@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"ng-cl",
+				"ng-click	angular click"
+			],
+			[
+				"Google",
+				"GoogleLink"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"req",
+				"req	require()"
+			],
+			[
+				"ng-re",
+				"ng-repeat	angular repeat"
+			],
+			[
+				"find",
+				"find()	collection.js"
+			],
+			[
 				"findO",
 				"findOne(callback)	query.js"
 			],
@@ -138,45 +162,17 @@
 			[
 				"he",
 				"height"
-			],
-			[
-				"req",
-				"req	require"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "client/code/app/controllers.js",
-			"settings":
-			{
-				"buffer_size": 3898,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "client/templates/useredit.html",
-			"settings":
-			{
-				"buffer_size": 2341,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "app.js",
 			"settings":
 			{
-				"buffer_size": 1147,
+				"buffer_size": 1214,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "client/css/app.less",
-			"settings":
-			{
-				"buffer_size": 48132,
-				"line_ending": "Windows"
 			}
 		}
 	],
@@ -320,16 +316,63 @@
 	},
 	"file_history":
 	[
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/stylesheets.css",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/mystyles.css",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/quickcommand.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/app.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/serverstatus.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/status.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/app/app.js",
+		"/C/xampp/htdocs/themeforest-aries-metro-style-admin-template/themeforest-aries-metro-style-admin-template/HTML/index.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/script.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/servermemory.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/usermanager.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/app/controllers.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/sidebar.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/countstatus.html",
+		"/C/xampp/htdocs/sonqtabs/index.php",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/user.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/google.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/.gitignore",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/app.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/auth.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/status.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/useredit.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/userform.html",
+		"/C/Users/phong/AppData/Local/Temp/fz3temp-2/index.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/proxy.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/deadproxies.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/proxy.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/aliveproxies.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/uncheckedproxy.html",
+		"/C/Users/phong/AppData/Local/Temp/fz3temp-2/ja.vm.css",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/deadproxy.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/aliveproxy.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/deadproxies.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/aliveproxies.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/uncheckedproxies.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/googlelinks.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/latestproxy.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/proxies.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/latestlinks.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/views/index.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/usernew.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/libs/2.jquery/1.selectivizr.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/libs/1.angular/angular.min.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/user.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/app.less",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/googlelink.js",
+		"/C/Users/phong/AppData/Local/Temp/fz3temp-2/footer.php",
+		"/C/Users/phong/Documents/GitHub/express-upload-progress/app.js",
+		"/C/Users/phong/Documents/GitHub/ggcp/server/models/googlelink.coffee",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/users.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/package.json",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/header.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/settings.less",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/app.less",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/app.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/libs/2.angular/angular.min.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/libs/2.angular/angular-1.0.1.js",
 		"/C/Users/phong/Documents/Visual Studio 2012/Projects/todos/app/views/main.html",
 		"/C/Users/phong/Documents/Visual Studio 2012/Projects/todos/app/scripts/controllers/main.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/auth.js",
 		"/C/Users/phong/Documents/GitHub/micro-blog/public/js/index.js",
 		"/C/Users/phong/Documents/GitHub/micro-blog/public/js/global.js",
 		"/C/Users/phong/Documents/GitHub/yogle/app/scripts/controllers/list.js",
@@ -338,22 +381,16 @@
 		"/C/Users/phong/Documents/GitHub/yogle/app/scripts/app.js",
 		"/C/Users/phong/Documents/GitHub/yogle/app/scripts/controllers/view.js",
 		"/C/Users/phong/Documents/GitHub/yogle/app/views/browse.html",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/useredit.html",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/user.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/views/index.html",
 		"/C/Users/phong/Documents/GitHub/yogle/app/views/list.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/example.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/plugins/jquery.jgrowl.css",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/partials/header.html",
 		"/C/Users/phong/Documents/GitHub/micro-blog/public/index.html",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/app.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/app/controllers.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/login.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/custom/font-awesome.less",
 		"/C/Users/phong/Documents/GitHub/ggcp/app.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/example.js",
 		"/C/Users/phong/Documents/GitHub/ggcp/server/models/user.coffee",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/package.json",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/style.less",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/bootstrap/variables.less",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/node_modules/ss-angular/example/package.json",
@@ -406,48 +443,7 @@
 		"/C/Users/phong/AppData/Roaming/Sublime Text 2/Packages/CoffeeComplete Plus (Autocompletion)/CoffeeComplete Plus.sublime-settings",
 		"/c/Users/phong/Documents/GitHub/ggcp/ggcp.sublime-workspace",
 		"/c/Users/phong/Documents/GitHub/ggcp/client/css/libs/datatable.css",
-		"/c/Users/phong/Documents/GitHub/ggcp/client/css/libs/elfinder.css",
-		"/c/Users/phong/Documents/GitHub/ggcp/client/css/libs/fullcalendar.css",
-		"/c/Users/phong/Documents/GitHub/ggcp/client/css/libs/main.css",
-		"/c/Users/phong/Documents/GitHub/ggcp/client/css/libs/prettyPhoto.css",
-		"/c/Users/phong/Documents/GitHub/ggcp/client/css/libs/ui_custom.css",
-		"/c/Users/phong/Documents/GitHub/ggcp/node_modules/ss-hogan/node_modules/hogan.js/web/stylesheets/layout.css",
-		"/c/Users/phong/Documents/GitHub/ggcp/README.md",
-		"/C/xampp/htdocs/ggdesign/js/custom.js",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/app.js",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/client/code/app/app.coffee",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/client/views/app.jade",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/server/rpc/auth.coffee",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/server/rpc/demo.coffee",
-		"/C/xampp/htdocs/ggdesign/index.html",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/client/css/app.styl",
-		"/C/Users/phong/AppData/Local/Temp/fz3temp-1/.htaccess",
-		"/C/Users/phong/AppData/Local/Temp/fz3temp-1/wp-config.php",
-		"/C/working/wp-config.php",
-		"/C/working/phong_vascara.sql",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/ggcp.sublime-workspace",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/client/css/libs/datatable.css",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/client/css/libs/elfinder.css",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/client/css/libs/fullcalendar.css",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/client/css/libs/main.css",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/client/css/libs/prettyPhoto.css",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/client/css/libs/ui_custom.css",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/node_modules/ss-hogan/node_modules/hogan.js/web/stylesheets/layout.css",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/client/css/libs/reset.css",
-		"/C/Users/phong/Documents/Visual Studio 2012/Projects/ggcp/.nodemonignore",
-		"/C/xampp/htdocs/vascara/wp-content/themes/vascara/header.php",
-		"/C/xampp/htdocs/vascara/wp-content/themes/vascara/style.css",
-		"/C/working/error/index.html",
-		"/C/xampp/htdocs/vascara/wp-content/plugins/wp-e-commerce/wpsc-includes/product-template.php",
-		"/C/xampp/htdocs/vascara/wp-content/themes/vascara/wpsc-single_product.php",
-		"/C/xampp/htdocs/vascara/wp-content/themes/vascara/home-page.php",
-		"/C/xampp/htdocs/vascara/wp-content/plugins/wpec-related-products/wpec-related-product.php",
-		"/C/xampp/htdocs/vascara/wp-content/themes/vascara/wpec-related-product.php",
-		"/C/Users/phong/AppData/Local/Temp/fz3temp-2/footer.php",
-		"/C/xampp/htdocs/vascara/wp-content/plugins/wp-e-commerce/wpsc-theme/wpsc-default.css",
-		"/C/Users/phong/AppData/Local/Temp/fz3temp-2/configuration.php",
-		"/C/xampp/htdocs/iai.php",
-		"/C/xampp/htdocs/vascara/wp-content/plugins/custom-field-template/custom-field-template.php"
+		"/c/Users/phong/Documents/GitHub/ggcp/client/css/libs/elfinder.css"
 	],
 	"find":
 	{
@@ -472,6 +468,21 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"<script type='text/javascript' src=\"js/",
+			"\"></script>",
+			"'></script>",
+			"<script type='text/javascript' src='js/",
+			"Proxy",
+			"/app",
+			"SSCtrl",
+			"auth.",
+			">\n",
+			"tlink",
+			"googlelinks",
+			"GoogleLink",
+			"log",
+			"sticky: true,",
+			"stick",
 			"profile",
 			"Huraga",
 			"huraga",
@@ -584,22 +595,7 @@
 			"-hover",
 			"turnjs-slider",
 			"slider",
-			"log",
-			"current",
-			"currentPage",
-			"log",
-			"animated",
-			"animate",
-			"$('#book-zoom')",
-			"log",
-			"$('#book-zoom')",
-			"close",
-			".splash",
-			"<h3>Aliquam ultricies, mauris et eleifend mattis</h3>\n                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo tempor ipsum, sed tempor elit dapibus vitae. Vivamus facilisis lobortis urna, vestibulum mollis nisl sagittis eu. In scelerisque nunc eu metus ultrices vitae mollis eros iaculis. Donec lacus ligula, consequat vel mollis id, ultrices id massa. Aliquam ultricies, mauris et eleifend mattis, purus turpis sagittis tellus, ac elementum nulla nunc eget leo. Phasellus vulputate pellentesque iaculis. Etiam vehicula urna non diam gravida vel posuere odio accumsan. Nunc at lectus lectus, a ullamcorper erat. Vivamus blandit nulla eget diam sagittis fringilla. Morbi convallis adipiscing mollis.</p>",
-			">\n",
-			" Page 2 ",
-			" Page 1 ",
-			"bookflip"
+			"log"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -607,6 +603,15 @@
 		"regex": false,
 		"replace_history":
 		[
+			"'libs/",
+			"',",
+			"'libs/",
+			"Script",
+			"/dashboard",
+			"DashboardCtrl",
+			"proxies",
+			"Proxy",
+			"",
 			"Phantom",
 			"phantom",
 			"password2",
@@ -735,84 +740,23 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "client/code/app/controllers.js",
-					"settings":
-					{
-						"buffer_size": 3898,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								766,
-								766
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 54.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "client/templates/useredit.html",
-					"settings":
-					{
-						"buffer_size": 2341,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2030,
-								2247
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "app.js",
 					"settings":
 					{
-						"buffer_size": 1147,
+						"buffer_size": 1214,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								446,
-								446
+								329,
+								329
 							]
 						],
 						"settings":
@@ -824,36 +768,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "client/css/app.less",
-					"settings":
-					{
-						"buffer_size": 48132,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7471,
-								7471
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/LESS/LESS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 7455.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1201,6 +1115,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 306.0,
+	"side_bar_width": 346.0,
 	"status_bar_visible": true
 }

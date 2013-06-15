@@ -1,8 +1,8 @@
 <!-- Data block -->
-<article class="span8 data-block">
+<article class="span6 data-block">
 	<div class="data-container">
 		<header>
-			<h2><span class="awe-signal"></span> Server Status</h2>
+			<h2><span class="awe-signal"></span> Server Info	</h2>
 		</header>
 		<section>
 			<div class="row-fluid">
@@ -20,8 +20,24 @@
 						<td>{{serverStatus.uptime}}</td>
 					</tr>
 					<tr>
-						<th>Serer Time</th>
+						<th>Server Time</th>
 						<td>{{serverStatus.servertime}}</td>
+					</tr>
+					<tr>
+						<th>Total users</th>
+						<td>{{serverStatus.totalUsers}}</td>
+					</tr>
+					<tr>
+						<th>Total proxies</th>
+						<td>{{serverStatus.totalProxies}}</td>
+					</tr>
+					<tr>
+						<th>Alive proxies</th>
+						<td>{{serverStatus.aliveProxies}}</td>
+					</tr>
+					<tr>
+						<th>Dead proxies</th>
+						<td>{{serverStatus.deadProxies}}</td>
 					</tr>
 				</table>
 			</div>

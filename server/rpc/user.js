@@ -112,7 +112,13 @@ exports.actions = function(req,res,ss) {
       }
     },
     deleteUser: function(userId){
-      console.log(User)
+      User.findOneAndRemove({userId: userId}, function(error){
+        if (error) {
+          ss.publish.all('danger','User Manager', 'Error when delete user');
+          return res(false);
+        }
+        return res('Deleted user');
+      });
     },
     getUsers: function(){
       if ((req.session != null) && (req.session.userId != null)) {
