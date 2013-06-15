@@ -2,20 +2,31 @@ angular.module('exampleApp', ['ssAngular'])
 .config(['authProvider','$routeProvider','$locationProvider',function(authProvider,$routeProvider,$locationProvider) {
   authProvider.authServiceModule('auth');
   authProvider.loginPath('/login');
+  // Route config
   $routeProvider.
   when('/login', {controller:'AuthCtrl', templateUrl:'login.html'}).
   when('/dashboard', {controller:'DashboardCtrl', templateUrl:'app.html'}).
+  // User Manager
   when('/user', {controller:'UserCtrl', templateUrl:'usermanager.html'}).
   when('/user/create', {controller:'UserCtrl', templateUrl:'usernew.html'}).
   when('/user/:userid', {controller:'UserCtrl', templateUrl:'useredit.html'}).
-  when('/file', {controller:'DashboardCtrl', templateUrl:'app.html'}).
+  // Scraper Engine
+  when('/scraper', {controller:'UserCtrl', templateUrl:'usermanager.html'}).
+  when('/scraper/create', {controller:'UserCtrl', templateUrl:'usernew.html'}).
+  when('/scraper/:userid', {controller:'UserCtrl', templateUrl:'useredit.html'}).
+  // Script Manager
+  when('/script', {controller:'UserCtrl', templateUrl:'usermanager.html'}).
+  when('/script/create', {controller:'UserCtrl', templateUrl:'usernew.html'}).
+  when('/script/:userid', {controller:'UserCtrl', templateUrl:'useredit.html'}).
   otherwise({redirectTo:'/dashboard'});
   $locationProvider.html5Mode(true);
 }])
+// Share data between modules
 .factory('ShareData', function(rpc, auth, $location) {
   return {
-    menus: [{key: "user", title: "User Manager"},
-    {key: "file", title: "Script Manager"}],
+    menus: [{key: "user", icon:"user", title: "User Manager"},
+    {key: "scraper", icon:"bar-chart", title: "Scraper Engine"},
+    {key:"script", icon: "file", title: "Script Manager"}],
     username: rpc('user.getCurrentUser'),
     displayname: rpc('user.getName'),
     logout: function() {
@@ -46,7 +57,8 @@ angular.module('exampleApp', ['ssAngular'])
     
     // Update User
     $scope.updateUser = function(){
-      rpc('user.updateUser', $scope.username, $scope.password, $scope.password2, $scope.displayname);
+      var displayname = $scope.displayname.$$v || $scope.displayname;
+      rpc('user.updateUser', $scope.username, $scope.password, $scope.password2, displayname);
       $location.path('/user');
     };
 
@@ -62,6 +74,7 @@ angular.module('exampleApp', ['ssAngular'])
     }
 
   }])
+// This one is copied from original ss-angular example, check the docs
 .controller('AuthCtrl',['$scope', '$location', '$log', 'auth','ShareData','rpc', function($scope, $location, $log, auth, ShareData, rpc) {
   $scope.processAuth = function() {
     $scope.showError = false;
