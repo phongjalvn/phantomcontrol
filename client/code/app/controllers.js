@@ -46,7 +46,7 @@ angular.module('exampleApp', ['ssAngular'])
     
     // Update User
     $scope.updateUser = function(){
-      rpc('user.updateUser', $scope.username, $scope.password, $scope.password2, $scope.displayname.$$v);
+      rpc('user.updateUser', $scope.username, $scope.password, $scope.password2, $scope.displayname);
       $location.path('/user');
     };
 
@@ -69,7 +69,6 @@ angular.module('exampleApp', ['ssAngular'])
     promise.then(function(reason) {
       ShareData.username= rpc('user.getCurrentUser');
       ShareData.displayname= rpc('user.getName');
-      $log.log(reason);
       var newPath = '/dashboard';
       if($scope.redirectPath) {
         newPath = $scope.redirectPath;

@@ -12,7 +12,7 @@ exports.make = function(des,chan,ss) {
         if(!error){
           chan(users);
         } else {
-          ss.publish.all('danger','Server status update', 'Error when getting data!')
+          ss.publish.all('danger','Server status update', 'Error when getting data!');
         }
       })
     }

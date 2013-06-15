@@ -6,39 +6,32 @@ exports.actions = function(req,res,ss) {
 	return {
     getCurrentUser: function(){
       if(req.session.userId) {
-        res(req.session.userId);
+        return res(req.session.userId);
       }
-      else {
-        res(false);
-      }
+      ss.publish.all('message','danger','User Manager', 'Error when getting current user');
+      return res(false);
     },
     getName: function(userId){
-      if(!req.session.userId){
-        return res(false);
-      }
       var uid = userId || req.session.userId;
+      console.log('asdsdasdad',uid);
       if(uid) {
         User.findOne({
           userId:uid
         },function(error,user){
+          console.log('1231231213',uid);
           if (error == null) {
             if (user != null) {
               return res(user.displayname);
             } else {
+              ss.publish.all('message','danger','User Manager', 'Error when getting displayname');
               return res(false);
             }
-          } else {
-            return res(false);
           }
         });
-      }
-      else {
-        res(false);
       }
     },
     createUser: function(username, password, password2, displayname) {
       if ((req.session != null) && (req.session.userId != null)) {
-        console.log(username, password, password2, displayname)
         if (username && password && password2 && displayname && password==password2) {
           return User.findOne({
             userId: username
@@ -51,24 +44,20 @@ exports.actions = function(req,res,ss) {
                 newuser.displayname = displayname;
                 return newuser.save(function(error) {
                   if (error == null) {
+                    ss.publish.all('message','success','User Manager', 'Created user');
                     return res(true);
-                  } else {
-                    return res(false);
                   }
                 });
               } else {
+                ss.publish.all('message','danger','User Manager', 'User already exist!');
                 return res(false);
               }
-            } else {
-              return res(false);
             }
           });
-        } else {
-          return res(false);
         }
-      } else {
-        return res(false);
       }
+      ss.publish.all('message','danger','User Manager', 'Error when create user');
+      return res(false);
     },
     updateUser: function(username, password, password2, displayname) {
       if ((req.session != null) && (req.session.userId != null)) {
@@ -92,43 +81,27 @@ exports.actions = function(req,res,ss) {
                 // Save it
                 return user.save(function(error) {
                   if (error == null) {
+                    ss.publish.all('message','success','User Manager', 'Updated user');
                     return res(true);
-                  } else {
-                    return res(false);
                   }
                 });
-              } else {
-                return res(false);
               }
-            } else {
-              return res(false);
             }
           });
-        } else {
-          return res(false);
         }
-      } else {
-        return res(false);
       }
+      ss.publish.all('danger','User Manager', 'Error when update user');
+      return res(false);
     },
     deleteUser: function(userId){
       User.findOneAndRemove({userId: userId}, function(error){
-        if (error) {
-          ss.publish.all('danger','User Manager', 'Error when delete user');
-          return res(false);
+        if (!error) {
+          ss.publish.all('message','success','User Manager', 'Deleted user');
+          return res('Deleted user');
         }
-        return res('Deleted user');
+        ss.publish.all('message','danger','User Manager', 'Error when delete user');
+        return res(false);
       });
-    },
-    getUsers: function(){
-      if ((req.session != null) && (req.session.userId != null)) {
-        User.find(function(error, users){
-          if (!error) {
-            return res(users);
-          };
-        });
-      }
-      return false;
     }
 	}
 }
