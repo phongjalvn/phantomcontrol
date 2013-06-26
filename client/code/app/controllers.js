@@ -11,9 +11,9 @@ angular.module('exampleApp', ['ssAngular'])
   when('/user/create', {controller:'UserCtrl', templateUrl:'usernew.html'}).
   when('/user/:userid', {controller:'UserCtrl', templateUrl:'useredit.html'}).
   // Scraper Engine
-  when('/scraper', {controller:'UserCtrl', templateUrl:'usermanager.html'}).
-  when('/scraper/create', {controller:'UserCtrl', templateUrl:'usernew.html'}).
-  when('/scraper/:userid', {controller:'UserCtrl', templateUrl:'useredit.html'}).
+  when('/site', {controller:'SiteCtrl', templateUrl:'sitemanager.html'}).
+  when('/site/create', {controller:'SiteCtrl', templateUrl:'sitenew.html'}).
+  when('/site/:name', {controller:'SiteCtrl', templateUrl:'siteedit.html'}).
   // Script Manager
   when('/script', {controller:'UserCtrl', templateUrl:'usermanager.html'}).
   when('/script/create', {controller:'UserCtrl', templateUrl:'usernew.html'}).
@@ -25,7 +25,7 @@ angular.module('exampleApp', ['ssAngular'])
 .factory('ShareData', function(rpc, auth, $location) {
   return {
     menus: [{key: "user", icon:"user", title: "User Manager"},
-    {key: "scraper", icon:"bar-chart", title: "Scraper Engine"},
+    {key: "site", icon:"bar-chart", title: "Scraper Engine"},
     {key:"script", icon: "file", title: "Script Manager"}],
     username: rpc('user.getCurrentUser'),
     displayname: rpc('user.getName'),
@@ -73,6 +73,55 @@ angular.module('exampleApp', ['ssAngular'])
       rpc('user.deleteUser',$scope.users[index].userId);
     }
 
+  }])
+.controller('SiteCtrl',['$scope','$location','pubsub','rpc','model','auth','ShareData','$routeParams',
+    function($scope,$location,pubsub,rpc,model,auth,ShareData,$routeParams) {
+    $scope.location = $location; // Access $location inside the view.
+    $scope.sharedata = ShareData; // Access Share Data
+    // Update server status
+    $scope.linkModel('sites','sites');
+    $scope.site = {
+      name:'',
+      url:'',
+      pageParam:'',
+      maxPage:0,
+      pageSuffix: '',
+      useSpliter: true,
+      spliter: '',
+      rowSelector: '',
+      ipSelector: '',
+      portSelector: ''
+    };
+
+    $scope.create = function(){
+      console.log($scope.site);
+      rpc('site.create', $scope.site);
+      $location.path('/site');
+    };
+
+    if ($routeParams.name) {
+      siteTmp = rpc('site.get', $routeParams.name);
+      $scope.site = siteTmp;
+      var checkSiteTmp = setInterval(function(){
+        if(siteTmp.$$v){
+          clearInterval(checkSiteTmp);
+          $scope.site = siteTmp.$$v;
+        }
+      }, 200);
+    };
+
+    $scope.delete = function(index){
+      rpc('site.delete',$scope.sites[index].name);
+    };
+
+    $scope.update = function(){
+      rpc('site.update', $routeParams.name, $scope.site);
+      $location.path('/site');
+    };
+
+    $scope.run = function(index){
+      rpc('site.run',$scope.sites[index].name);
+    };
   }])
 // This one is copied from original ss-angular example, check the docs
 .controller('AuthCtrl',['$scope', '$location', '$log', 'auth','ShareData','rpc', function($scope, $location, $log, auth, ShareData, rpc) {

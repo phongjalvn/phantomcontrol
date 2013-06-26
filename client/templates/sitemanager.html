@@ -1,0 +1,64 @@
+<div ng-show="authenticated">
+	<ng-include src="'header.html'"></ng-include>
+	<section class="container" id="main">
+		<ng-include src="'sidebar.html'"></ng-include>
+		<div class="content-block" role="main">
+
+			<!-- Page header -->
+			<article class="page-header">
+				<h1>Site Manager</h1>
+			</article>
+			<!-- /Page header -->
+			
+			<div class="row">
+				<!-- Data block -->
+				<article class="span12 data-block">
+					<div class="data-container">
+						<header>
+							<h2><span class="awe-bar-chart"></span> All scraper scripts</h2>
+							<ul class="data-header-actions">
+								<li>
+									<a class="btn btn-alt btn-inverse" href="/site/create">Add new site</a>
+								</li>
+							</ul>
+						</header>
+						<section>
+							<div class="row-fluid">
+								<div class="span12">
+									<div class="form_inline">
+										<label>Search: <input type="text" ng-model="search"></label>
+									</div>
+									<table class="table table-stripped table-hover">
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>Url</th>
+											<th>isRunning</th>
+											<th>Last Run</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+									<tr ng-repeat="site in sites|filter:search">
+										<td>{{site.name}}</td>
+										<td>{{site.url}}</td>
+										<td>{{site.isRunning}}</td>
+										<td>{{site.lastRun}}</td>
+										<td>
+											<a href="/site/{{site.name}}" class="btn"><span class="awe-pencil"></span></a>
+											<a href="javascript:;" ng-click="delete($index)" class="btn btn-danger"><span class="awe-trash"></span></a>
+											<a href="javascript:;" ng-click="run($index)" class="btn btn-primary"><span class="awe-play"></span> Run</a>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+								</div>
+							</div>
+						</section>
+					</div>
+				</article>
+				<!-- /Data block -->
+			</div>
+		</div>
+	</section>
+</div>

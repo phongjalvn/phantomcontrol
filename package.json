@@ -15,7 +15,9 @@
     "ss-angular": "latest",
     "request": "~2.21.0",
     "colors": "~0.6.0-1",
-    "coffee-script": "~1.6.3"
+    "coffee-script": "~1.6.3",
+    "memstream": "0.0.1",
+    "cheerio": "~0.12.0"
   },
   "scripts": {
     "start": "node app.js"

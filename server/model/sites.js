@@ -1,6 +1,6 @@
 //des describes the model and has the middleware
 //chan is a channel on which to post the updated model object
-var User = require('./user').User;
+var Site = require('./site').Site;
 var async = require('async');
 exports.make = function(des,chan,ss) {
   des.use('session')
@@ -8,13 +8,13 @@ exports.make = function(des,chan,ss) {
   return {
     //must have a poll function for now. may have other update models
     poll: function(p) {
-      User.find().select('userId displayname').exec(function(error,users){
+      Site.find(function(error,sites){
         if(!error){
-          chan(users);
+          chan(sites);
         } else {
-          ss.publish.all('danger','User List', 'Error when getting data!');
+          ss.publish.all('danger','Site List', 'Error when getting data!');
         }
-      })
+      });
     }
   };
 };

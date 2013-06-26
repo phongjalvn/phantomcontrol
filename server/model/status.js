@@ -26,22 +26,6 @@ exports.make = function(des,chan,ss) {
             };
             callback(null,count);
           })
-        },
-        aliveProxies: function(callback){
-          Proxy.count({status:'alive'},function(error, count){
-            if (error) {
-              callback(error);
-            };
-            callback(null,count);
-          })
-        },
-        deadProxies: function(callback){
-          Proxy.count({status:'dead'},function(error, count){
-            if (error) {
-              callback(error);
-            };
-            callback(null,count);
-          })
         }
       },
       function(err, results) {
@@ -55,9 +39,7 @@ exports.make = function(des,chan,ss) {
           uptime: Math.round(process.uptime()),
           servertime: d,
           totalUsers: results.totalUsers,
-          totalProxies: results.totalProxies,
-          aliveProxies: results.aliveProxies,
-          deadProxies: results.deadProxies
+          totalProxies: results.totalProxies
         };
         chan(status);
       });

@@ -168,20 +168,24 @@
 	"buffers":
 	[
 		{
-			"file": "app.js",
+			"file": "server/rpc/site.js",
 			"settings":
 			{
-				"buffer_size": 1214,
-				"line_ending": "Unix"
+				"buffer_size": 6565,
+				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 219.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"commit",
+				"Git: Commit"
+			],
 			[
 				"javas",
 				"Set Syntax: JavaScript"
@@ -299,7 +303,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 528.0
+		"width": 536.0
 	},
 	"console":
 	{
@@ -316,33 +320,43 @@
 	},
 	"file_history":
 	[
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/app/controllers.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/sitenew.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/siteedit.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/site.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/site.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/proxy.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/sitemanager.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/proxy.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/status.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/serverstatus.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/sites.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/google.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/app/app.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/user.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/users.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/user.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/useredit.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/usermanager.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/usernew.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/sidebar.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/app.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/login.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/script.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/app.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/stylesheets.css",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/mystyles.css",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/quickcommand.html",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/app.html",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/serverstatus.html",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/status.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/app/app.js",
 		"/C/xampp/htdocs/themeforest-aries-metro-style-admin-template/themeforest-aries-metro-style-admin-template/HTML/index.html",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/script.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/servermemory.html",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/usermanager.html",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/app/controllers.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/sidebar.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/countstatus.html",
 		"/C/xampp/htdocs/sonqtabs/index.php",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/user.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/google.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/.gitignore",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/app.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/auth.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/status.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/useredit.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/userform.html",
 		"/C/Users/phong/AppData/Local/Temp/fz3temp-2/index.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/proxy.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/deadproxies.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/proxy.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/aliveproxies.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/uncheckedproxy.html",
 		"/C/Users/phong/AppData/Local/Temp/fz3temp-2/ja.vm.css",
@@ -356,10 +370,8 @@
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/proxies.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/latestlinks.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/views/index.html",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/usernew.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/libs/2.jquery/1.selectivizr.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/libs/1.angular/angular.min.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/user.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/app.less",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/googlelink.js",
 		"/C/Users/phong/AppData/Local/Temp/fz3temp-2/footer.php",
@@ -386,7 +398,6 @@
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/plugins/jquery.jgrowl.css",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/partials/header.html",
 		"/C/Users/phong/Documents/GitHub/micro-blog/public/index.html",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/login.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/custom/font-awesome.less",
 		"/C/Users/phong/Documents/GitHub/ggcp/app.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/example.js",
@@ -436,14 +447,7 @@
 		"/C/Users/phong/Documents/GitHub/aa/server/rpc/demo.coffee",
 		"/c/Users/phong/Documents/GitHub/ggcp/package.json",
 		"/C/Users/phong/Documents/GitHub/ggcp/client/code/modules/auth.coffee",
-		"/C/Users/phong/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/c/Users/phong/Documents/GitHub/ggcp/server/models/user.js",
-		"/C/Users/phong/AppData/Roaming/Sublime Text 2/Packages/sublime-better-coffeescript/Keymaps/Default (Windows).sublime-keymap",
-		"/C/Users/phong/AppData/Roaming/Sublime Text 2/Packages/sublime-better-coffeescript/CoffeeScript.sublime-settings",
-		"/C/Users/phong/AppData/Roaming/Sublime Text 2/Packages/CoffeeComplete Plus (Autocompletion)/CoffeeComplete Plus.sublime-settings",
-		"/c/Users/phong/Documents/GitHub/ggcp/ggcp.sublime-workspace",
-		"/c/Users/phong/Documents/GitHub/ggcp/client/css/libs/datatable.css",
-		"/c/Users/phong/Documents/GitHub/ggcp/client/css/libs/elfinder.css"
+		"/C/Users/phong/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings"
 	],
 	"find":
 	{
@@ -451,7 +455,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"",
@@ -468,6 +472,17 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"submitsite",
+			"current",
+			"ng-model=\"",
+			"user",
+			"user ==",
+			"error, user",
+			"User",
+			"$scope.",
+			"Proxy",
+			"getName",
+			"$$v",
 			"<script type='text/javascript' src=\"js/",
 			"\"></script>",
 			"'></script>",
@@ -584,18 +599,7 @@
 			"#register",
 			"register",
 			"trim",
-			"slider-special",
-			"preview",
-			"180deg",
-			"rotateX",
-			"360deg",
-			"totateX",
-			"NAME-YOUR-ANIMATION",
-			"numberOfViews",
-			"-hover",
-			"turnjs-slider",
-			"slider",
-			"log"
+			"slider-special"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -603,6 +607,14 @@
 		"regex": false,
 		"replace_history":
 		[
+			"siteSubmit",
+			"ng-model=\"site.",
+			"site",
+			"site ==",
+			"error, site",
+			"Site",
+			"",
+			"Site",
 			"'libs/",
 			"',",
 			"'libs/",
@@ -722,14 +734,7 @@
 			"ietpro",
 			"vietpro",
 			"vierpro-",
-			"vietpro",
-			"VierPro",
-			"sqlite3",
-			"root",
-			"plugin",
-			"",
-			"plugin",
-			"plugins"
+			"vietpro"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -745,18 +750,18 @@
 			[
 				{
 					"buffer": 0,
-					"file": "app.js",
+					"file": "server/rpc/site.js",
 					"settings":
 					{
-						"buffer_size": 1214,
+						"buffer_size": 6565,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								329,
-								329
+								2879,
+								2859
 							]
 						],
 						"settings":
@@ -764,10 +769,12 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1080.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -814,6 +821,10 @@
 	{
 		"height": 100.0
 	},
+	"output.git":
+	{
+		"height": 118.0
+	},
 	"output.sftp":
 	{
 		"height": 100.0
@@ -828,6 +839,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"app",
+				"client/code/app/app.js"
+			],
 			[
 				"cust",
 				"client/code/libs/custom.js"
@@ -1013,10 +1028,6 @@
 				"css/position.css"
 			],
 			[
-				"app",
-				"client/code/app/app.js"
-			],
-			[
 				"vela",
 				"css/velatek.css"
 			],
@@ -1072,6 +1083,14 @@
 		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"abs",
+				"/C/xampp/htdocs/sonqtabs/sonqtabs.sublime-project"
+			],
+			[
+				"son",
+				"/C/xampp/htdocs/sonqtabs/sonqtabs.sublime-project"
+			],
 			[
 				"lotus",
 				"/C/xampp/htdocs/lotus/lotus.sublime-project"

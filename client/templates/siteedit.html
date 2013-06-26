@@ -1,0 +1,98 @@
+<div ng-show="authenticated">
+	<ng-include src="'header.html'"></ng-include>
+	<section class="container" id="main">
+		<ng-include src="'sidebar.html'"></ng-include>
+		<div class="content-block" role="main">
+			<!-- Page header -->
+			<article class="page-header">
+				<h1>Editing site {{site.name}}</h1>
+			</article>
+			<!-- /Page header -->
+			
+			<div class="row">
+				<!-- Data block -->
+				<article class="span12 data-block">
+					<div class="data-container">
+						<section>
+							<div class="row-fluid">
+								<div class="span12">
+									<form class="form-horizontal" ng-submit="update()">
+										<fieldset>
+											<div class="control-group">
+												<label class="control-label" for="name" required>Name</label>
+												<div class="controls">
+													<input id="name" class="input-xlarge" type="text" ng-model="site.name">
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="url" required>Url</label>
+												<div class="controls">
+													<input id="url" class="input-xlarge" type="text" ng-model="site.url">
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="pageParam" required>Page Param</label>
+												<div class="controls">
+													<input id="pageParam" class="input-xlarge" type="text" ng-model="site.pageParam">
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="maxPage" required>Max Page</label>
+												<div class="controls">
+													<input id="maxPage" class="input-xlarge" type="text" ng-model="site.maxPage">
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="pageSuffix" required>Page Suffix</label>
+												<div class="controls">
+													<input id="pageSuffix" class="input-xlarge" type="text" ng-model="site.pageSuffix">
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="useSpliter">Use Splitter</label>
+												<div class="controls">
+													<input id="useSpliter" class="input-xlarge" type="checkbox" ng-model="site.useSpliter">
+												</div>
+											</div>
+											<div class="control-group" ng-show="site.useSpliter">
+												<label class="control-label" for="spliter">Spliter</label>
+												<div class="controls">
+													<input id="spliter" class="input-xlarge" type="text" ng-model="site.spliter">
+												</div>
+											</div>
+											<div class="control-group" ng-show="!site.useSpliter">
+												<label class="control-label" for="rowSelector">Row Selector</label>
+												<div class="controls">
+													<input id="rowSelector" class="input-xlarge" type="text" ng-model="site.rowSelector">
+												</div>
+											</div>
+											<div class="control-group" ng-show="!site.useSpliter">
+												<label class="control-label" for="ipSelector">Ip Selector</label>
+												<div class="controls">
+													<input id="ipSelector" class="input-xlarge" type="text" ng-model="site.ipSelector">
+												</div>
+											</div>
+											<div class="control-group" ng-show="!site.useSpliter">
+												<label class="control-label" for="portSelector">Port Selector</label>
+												<div class="controls">
+													<input id="portSelector" class="input-xlarge" type="text" ng-model="site.portSelector">
+												</div>
+											</div>
+											<div class="form-actions">
+												<input class="btn btn-alt btn-large btn-danger" type="submit" value="Save Site"/>
+											</div>
+										</fieldset>
+									</form>
+								</div>
+							</div>
+						</section>
+						<!-- <footer class="info">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam blandit, dolor mollis adipiscing elementum, ipsum turpis euismod tellus, vitae mollis velit leo id nisi.</p>
+						</footer> -->
+					</div>
+				</article>
+				<!-- /Data block -->
+			</div>
+		</div>
+	</section>
+</div>

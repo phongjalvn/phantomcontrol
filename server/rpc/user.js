@@ -13,12 +13,10 @@ exports.actions = function(req,res,ss) {
     },
     getName: function(userId){
       var uid = userId || req.session.userId;
-      console.log('asdsdasdad',uid);
       if(uid) {
         User.findOne({
           userId:uid
         },function(error,user){
-          console.log('1231231213',uid);
           if (error == null) {
             if (user != null) {
               return res(user.displayname);

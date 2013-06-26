@@ -8,8 +8,6 @@ ProxySchema = new Schema({
   ip: String,
 	port: String,
   server: String,
-  status: String,
-  checkedTime: Number,
   createdAt: {
     type: Date,
     "default": Date.now
