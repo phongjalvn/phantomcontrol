@@ -6,11 +6,10 @@ exports.actions = function(req,res,ss) {
 		authenticate: function(username,password) {
 			if (username && password) {
         return User.findOne({
-          userId: username,
-          password: password
+          userId: username
         }, function(error, user) {
           if (error == null) {
-            if (user != null) {
+            if (user != null && passwordHash.verify(password, user.password)) {
               req.session.setUserId(user.userId);
               return res(true);
             } else {

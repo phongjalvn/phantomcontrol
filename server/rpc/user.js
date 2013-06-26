@@ -2,7 +2,8 @@ exports.actions = function(req,res,ss) {
 	var User;
   req.use('session');
   req.use('client.auth');
-  User = require('../model/user').User;
+  User = require('../model/user').User,
+  passwordHash = require('password-hash');
 	return {
     getCurrentUser: function(){
       if(req.session.userId) {
@@ -38,7 +39,7 @@ exports.actions = function(req,res,ss) {
               if (user == null) {
                 var newuser = new User();
                 newuser.userId = username;
-                newuser.password = password;
+                newuser.password = passwordHash.generate(password);
                 newuser.displayname = displayname;
                 return newuser.save(function(error) {
                   if (error == null) {
@@ -73,7 +74,7 @@ exports.actions = function(req,res,ss) {
                 };
                 // Update password
                 if (password && password == password2) {
-                  user.password = password;
+                  user.password = passwordHash.generate(password);
                 };
                 
                 // Save it

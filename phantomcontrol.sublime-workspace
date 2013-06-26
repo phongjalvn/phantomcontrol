@@ -167,21 +167,21 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "server/rpc/site.js",
-			"settings":
-			{
-				"buffer_size": 6565,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 196.0,
 		"selected_items":
 		[
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"git ad",
+				"Git: Add..."
+			],
 			[
 				"commit",
 				"Git: Commit"
@@ -320,11 +320,12 @@
 	},
 	"file_history":
 	[
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/.gitignore",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/site.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/app/controllers.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/sitenew.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/siteedit.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/site.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/site.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/proxy.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/sitemanager.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/proxy.js",
@@ -351,7 +352,6 @@
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/servermemory.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/countstatus.html",
 		"/C/xampp/htdocs/sonqtabs/index.php",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/.gitignore",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/auth.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/status.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/userform.html",
@@ -745,40 +745,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "server/rpc/site.js",
-					"settings":
-					{
-						"buffer_size": 6565,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2879,
-								2859
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1080.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1084,6 +1052,10 @@
 		"selected_items":
 		[
 			[
+				"vas",
+				"/C/xampp/htdocs/vascara/vascara.sublime-project"
+			],
+			[
 				"abs",
 				"/C/xampp/htdocs/sonqtabs/sonqtabs.sublime-project"
 			],
@@ -1134,6 +1106,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 346.0,
+	"side_bar_width": 297.0,
 	"status_bar_visible": true
 }
