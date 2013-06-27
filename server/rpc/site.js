@@ -1,6 +1,7 @@
 var async = require('async'),
 colors = require('colors'),
-exec = require('child_process').exec;
+exec = require('child_process').exec,
+phantom=require('node-phantom-ws');
 
 exports.actions = function(req,res,ss) {
 	var Site = require('../model/site').Site,
@@ -96,13 +97,33 @@ exports.actions = function(req,res,ss) {
       });
     },
     run: function(name){
-      var proxyRegex = /\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b:\d{2,5}/g,
-      currentSite;
+      var currentSite;
 
       // Get Proxy from a page
       var getProxyQueue = async.queue(function (siteurl, callback) {
-        console.log(currentSite);
-        callback();
+        console.log('Processing: '+siteurl);
+        phantom.create(function(err,ph) {
+          ph.createPage(function(err,page) {
+            page.set({userAgent:'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36'})
+            page.open(siteurl, function(err,status){
+              console.log("opened site? ", status);
+              // Spliter Scraper
+              if (currentSite.useSpliter) {
+                page.evaluate(function(){
+                  var bodyText = document.querySelectorAll('body')[0].innerText,
+                  proxyRegex = /\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b:\d{2,5}/g,
+                  proxies = bodyText.match(proxyRegex);
+                  return proxies;
+                }, function(err,result){
+                  console.log(result);
+                  checkProxyQueue.push(result);
+                  callback();
+                  ph.exit();
+                });
+              };
+            });
+          });
+        });
       }, 5);
       // Finish scrape all pages
       getProxyQueue.drain = function() {
