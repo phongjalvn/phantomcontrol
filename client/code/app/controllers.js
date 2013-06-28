@@ -85,8 +85,7 @@ angular.module('exampleApp', ['ssAngular'])
       url:'',
       pageParam:'',
       maxPage:0,
-      pageSuffix: '',
-      useRegEx: true
+      pageSuffix: ''
     };
 
     $scope.create = function(){

@@ -33,7 +33,7 @@
 										<tr>
 											<th>Name</th>
 											<th>Url</th>
-											<th>isRunning</th>
+											<th>Running</th>
 											<th>Last Run</th>
 											<th>Actions</th>
 										</tr>
@@ -42,12 +42,11 @@
 									<tr ng-repeat="site in sites|filter:search">
 										<td>{{site.name}}</td>
 										<td>{{site.url}}</td>
-										<td>{{site.isRunning}}</td>
+										<td><a class="btn btn-danger" ng-show="site.isRunning" href="javascript:;" ng-click="run($index)">Running</a><a href="javascript:;" ng-click="run($index)" class="btn btn-primary" ng-show="!site.isRunning"><span class="awe-play"></span> Run</a></td>
 										<td>{{site.lastRun}}</td>
 										<td>
 											<a href="/site/{{site.name}}" class="btn"><span class="awe-pencil"></span></a>
 											<a href="javascript:;" ng-click="delete($index)" class="btn btn-danger"><span class="awe-trash"></span></a>
-											<a href="javascript:;" ng-click="run($index)" class="btn btn-primary"><span class="awe-play"></span> Run</a>
 										</td>
 									</tr>
 									</tbody>

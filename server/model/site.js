@@ -10,7 +10,6 @@ SiteSchema = new Schema({
   pageParam: String,
   maxPage: Number,
   pageSuffix: String,
-  useRegEx: Boolean,
   lastRun: Date,
   isRunning: {
     type: Boolean,

@@ -31,8 +31,7 @@ exports.actions = function(req,res,ss) {
                 url: siteSubmit.url,
                 pageParam: siteSubmit.pageParam,
                 maxPage: siteSubmit.maxPage,
-                pageSuffix: siteSubmit.pageSuffix,
-                useRegEx: siteSubmit.useRegEx
+                pageSuffix: siteSubmit.pageSuffix
               });
               newsite.save(function(error) {
                 if (error == null) {
@@ -63,7 +62,6 @@ exports.actions = function(req,res,ss) {
               site.pageParam= siteSubmit.pageParam;
               site.maxPage= siteSubmit.maxPage;
               pageSuffix: siteSubmit.pageSuffix;
-              site.useRegEx= siteSubmit.useRegEx;
                 // Save it
                 site.save(function(error) {
                   if (error == null) {
@@ -103,37 +101,37 @@ exports.actions = function(req,res,ss) {
             // });
             page.open(siteurl, function(err,status){
               console.log("opened site? ", status);
-              // Spliter Scraper
-              if (currentSite.useRegEx) {
-                page.evaluate(function(){
-                  var bodyText = document.querySelectorAll('body')[0].innerText,
-                  proxyRegex = /\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b:\d{2,5}/g,
-                  proxies = bodyText.match(proxyRegex);
-                  return proxies;
-                }, function(err,result){
-                  //console.log(result);
-                  if (!err && result) {
-                    checkProxyQueue.push(result);
+              // Super Phantom Hero appear
+              page.evaluate(function(){
+                // This scope only run on Phantom
+                var bodyText = document.querySelectorAll('body')[0].innerText,
+                proxyRegex = /(\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b)([\t|\s|:]+)(\d{2,5})/g,
+                matches = bodyText.match(proxyRegex);
+                return matches;
+              }, function(err,result){
+                if (!err && result) {
+                  var proxyRegex = /(\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b)([\t|\s|:]+)(\d{2,5})/g;
+                  for (var i = result.length - 1; i >= 0; i--) {
+                    var proxy = proxyRegex.exec(result[i]);
+                    if (proxy) {
+                      checkProxyQueue.push({'ip':proxy[1],'port':proxy[3]});
+                    };
                   };
-                  callback();
-                  ph.exit();
-                });
-              };
+                };
+                callback();
+                ph.exit();
+              });
             });
           });
         });
       }, 5);
       // Finish scrape all pages
       getProxyQueue.drain = function() {
-        ss.publish.all('message','success','Site Manager', 'Site scraper started successfully!');
+        ss.publish.all('message','success','Site Manager', 'Site scraper run successfully, checking proxy!');
       }
 
       // Check Proxy Queue
-      var checkProxyQueue = async.queue(function (tmpproxy, callback) {
-        var proxy = {
-          ip: tmpproxy.split(':')[0],
-          port: tmpproxy.split(':')[1]
-        }
+      var checkProxyQueue = async.queue(function (proxy, callback) {
         console.log('Processing: '+proxy.ip+':'+proxy.port);
         var ipRegex = /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/;
         exec('curl --proxy ' + proxy.ip + ':'+ proxy.port + ' http://checkip.dyndns.org/',{timeout:5000}, function(err, stdout, stderr) {
@@ -198,6 +196,7 @@ exports.actions = function(req,res,ss) {
           for (var i = 0; i < site.maxPage; i++) {
             getProxyQueue.push(site.url+site.pageParam+i+site.pageSuffix);
           };
+          ss.publish.all('message','success','Site Manager', 'Site scraper started');
         } else {
           ss.publish.all('message','danger','Site Manager', 'Error when start site scraper');
         };
