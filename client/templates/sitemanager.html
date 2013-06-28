@@ -41,7 +41,7 @@
 									<tbody>
 									<tr ng-repeat="site in sites|filter:search">
 										<td>{{site.name}}</td>
-										<td>{{site.url}}</td>
+										<td><span class="overflow">{{site.url}}</span></td>
 										<td><a class="btn btn-danger" ng-show="site.isRunning" href="javascript:;" ng-click="run($index)">Running</a><a href="javascript:;" ng-click="run($index)" class="btn btn-primary" ng-show="!site.isRunning"><span class="awe-play"></span> Run</a> <a href="javascript:;" ng-click="run($index,true)" class="btn btn-primary" ng-show="!site.isRunning"><span class="awe-play-circle"></span> Run Test</a></td>
 										<td>{{site.lastRun}}</td>
 										<td>

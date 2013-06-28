@@ -90,29 +90,40 @@ exports.actions = function(req,res,ss) {
     },
     run: function(name, isTest){
       var currentSite,
-      allProxies = [], processedPage=0;
-
-      // Get Proxy from a page
-      var getProxyQueue = async.queue(function (siteurl, callback) {
-        var useProxy, proxyConfig, params;
-        if (allProxies.length) {
-          useProxy = allProxies[Math.floor(Math.random() * allProxies.length)];
-          proxyConfig = useProxy.ip+':'+useProxy.port;
-          params = {
-            'proxy': proxyConfig
+      allProxies = [], processedPage = 0;
+      var checkAliveProxy = function(proxy, callback){
+        var ipRegex = /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/;
+        exec('curl --proxy ' + proxy.ip + ':'+ proxy.port + ' http://checkip.dyndns.org/',{timeout:5000}, function(err, stdout, stderr) {
+          if (stdout && ipRegex.exec(stdout) && ipRegex.exec(stdout).shift()==proxy.ip) {
+            callback(null,proxy);
+          } else {
+            callback('Dead Proxy',proxy);
           }
-        };
-        console.log('Processing: '+siteurl+' through proxy: '+proxyConfig);
-        processedPage++;
+        });
+      };
+      var randomProxy = function(proxies, callback){
+        var proxy = proxies[Math.floor(Math.random() * proxies.length)];
+        checkAliveProxy(proxy, function(error, reproxy){
+          if (!error) {
+            callback(reproxy);
+          } else {
+            randomProxy(proxies, callback);
+          };
+        });
+      };
+      var phantomRunner = function(siteurl, params, callback){
         phantom.create(function(err,ph) {
           ph.createPage(function(err,page) {
             // page.set('settings',{'userAgent':'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36'}, function(err){
             //   if (!err) {
-
             //   };
             // });
             page.open(siteurl, function(err,status){
               console.log("opened site? ", status);
+              // If fail, add it to the queue again
+              if (status=='fail') {
+                getProxyQueue.push(siteurl);
+              };
               // Super Phantom Hero appear
               page.evaluate(function(){
                 // This scope only run on Phantom
@@ -141,6 +152,27 @@ exports.actions = function(req,res,ss) {
             });
           });
         }, {parameters:params});
+      }
+      // Get Proxy from a page
+      var getProxyQueue = async.queue(function (siteurl, callback) {
+        var useProxy, proxyConfig, params;
+        if (allProxies.length) {
+          randomProxy(allProxies, function(useProxy){
+            proxyConfig = useProxy.ip+':'+useProxy.port;
+            params = {
+              'proxy': proxyConfig
+            }
+            console.log('Processing: '+siteurl+' through proxy: '+proxyConfig);
+            processedPage++;
+            phantomRunner(siteurl, params, callback);
+          });
+        } else {
+          console.log('Processing: '+siteurl);
+          processedPage++;
+          phantomRunner(siteurl, params, callback);
+        };
+        
+        
       }, 5);
       // Finish scrape all pages
       getProxyQueue.drain = function() {
@@ -158,9 +190,8 @@ exports.actions = function(req,res,ss) {
       // Check Proxy Queue
       var checkProxyQueue = async.queue(function (proxy, callback) {
         // console.log('Processing: '+proxy.ip+':'+proxy.port);
-        var ipRegex = /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/;
-        exec('curl --proxy ' + proxy.ip + ':'+ proxy.port + ' http://checkip.dyndns.org/',{timeout:5000}, function(err, stdout, stderr) {
-          if (stdout && ipRegex.exec(stdout) && ipRegex.exec(stdout).shift()==proxy.ip) {
+        checkAliveProxy(proxy, function(error,proxy){
+          if (!error) {
             console.log('Alive proxy: '+proxy.ip.green);
             // Check If Proxy exist, if not, save it
             Proxy.findOne({ip:proxy.ip})
@@ -174,9 +205,7 @@ exports.actions = function(req,res,ss) {
                 newproxy.save();
               };
             });
-          } else {
-            // console.log(proxy.ip.red);
-          }
+          };
           callback();
         });
       }, 50);
