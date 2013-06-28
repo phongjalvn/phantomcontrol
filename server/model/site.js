@@ -10,11 +10,7 @@ SiteSchema = new Schema({
   pageParam: String,
   maxPage: Number,
   pageSuffix: String,
-  useSpliter: Boolean,
-  spliter: String,
-  rowSelector: String,
-  ipSelector: String,
-  portSelector: String,
+  useRegEx: Boolean,
   lastRun: Date,
   isRunning: {
     type: Boolean,

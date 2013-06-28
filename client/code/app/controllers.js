@@ -86,11 +86,7 @@ angular.module('exampleApp', ['ssAngular'])
       pageParam:'',
       maxPage:0,
       pageSuffix: '',
-      useSpliter: true,
-      spliter: '',
-      rowSelector: '',
-      ipSelector: '',
-      portSelector: ''
+      useRegEx: true
     };
 
     $scope.create = function(){

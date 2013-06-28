@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"querySelector",
+				"querySelectorAll	jsDOM"
+			],
+			[
 				"ng-cl",
 				"ng-click	angular click"
 			],
@@ -167,15 +171,31 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "server/rpc/site.js",
+			"settings":
+			{
+				"buffer_size": 7661,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 196.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
-				"git com",
+				"com",
+				"Git: Commit"
+			],
+			[
+				"add",
+				"Git: Add..."
+			],
+			[
+				"git",
 				"Git: Commit"
 			],
 			[
@@ -184,6 +204,14 @@
 			],
 			[
 				"commit",
+				"Git: Commit"
+			],
+			[
+				"comm",
+				"Git: Commit"
+			],
+			[
+				"git com",
 				"Git: Commit"
 			],
 			[
@@ -320,12 +348,15 @@
 	},
 	"file_history":
 	[
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/.gitignore",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/site.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/users.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/user.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/auth.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/site.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/.gitignore",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/app/controllers.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/sitenew.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/siteedit.html",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/site.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/proxy.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/sitemanager.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/proxy.js",
@@ -334,8 +365,6 @@
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/sites.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/google.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/app/app.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/user.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/users.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/user.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/useredit.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/usermanager.html",
@@ -352,7 +381,6 @@
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/servermemory.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/countstatus.html",
 		"/C/xampp/htdocs/sonqtabs/index.php",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/auth.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/status.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/userform.html",
 		"/C/Users/phong/AppData/Local/Temp/fz3temp-2/index.js",
@@ -455,7 +483,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 			"",
@@ -472,6 +500,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"create",
 			"submitsite",
 			"current",
 			"ng-model=\"",
@@ -598,8 +627,7 @@
 			"green",
 			"#register",
 			"register",
-			"trim",
-			"slider-special"
+			"trim"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -745,8 +773,40 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "server/rpc/site.js",
+					"settings":
+					{
+						"buffer_size": 7661,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4016,
+								4016
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1620.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1051,6 +1111,10 @@
 		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"visi",
+				"/C/xampp/htdocs/vision/vision.sublime-project"
+			],
 			[
 				"vas",
 				"/C/xampp/htdocs/vascara/vascara.sublime-project"

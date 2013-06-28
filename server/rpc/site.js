@@ -32,11 +32,7 @@ exports.actions = function(req,res,ss) {
                 pageParam: siteSubmit.pageParam,
                 maxPage: siteSubmit.maxPage,
                 pageSuffix: siteSubmit.pageSuffix,
-                useSpliter: siteSubmit.useSpliter,
-                spliter: siteSubmit.spliter,
-                rowSelector: siteSubmit.rowSelector,
-                ipSelector: siteSubmit.ipSelector,
-                portSelector: siteSubmit.portSelector
+                useRegEx: siteSubmit.useRegEx
               });
               newsite.save(function(error) {
                 if (error == null) {
@@ -67,11 +63,7 @@ exports.actions = function(req,res,ss) {
               site.pageParam= siteSubmit.pageParam;
               site.maxPage= siteSubmit.maxPage;
               pageSuffix: siteSubmit.pageSuffix;
-              site.useSpliter= siteSubmit.useSpliter;
-              site.spliter= siteSubmit.spliter;
-              site.rowSelector= siteSubmit.rowSelector;
-              site.ipSelector= siteSubmit.ipSelector;
-              site.portSelector= siteSubmit.portSelector;
+              site.useRegEx= siteSubmit.useRegEx;
                 // Save it
                 site.save(function(error) {
                   if (error == null) {
@@ -104,19 +96,25 @@ exports.actions = function(req,res,ss) {
         console.log('Processing: '+siteurl);
         phantom.create(function(err,ph) {
           ph.createPage(function(err,page) {
-            page.set({userAgent:'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36'})
+            // page.set('settings',{'userAgent':'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36'}, function(err){
+            //   if (!err) {
+
+            //   };
+            // });
             page.open(siteurl, function(err,status){
               console.log("opened site? ", status);
               // Spliter Scraper
-              if (currentSite.useSpliter) {
+              if (currentSite.useRegEx) {
                 page.evaluate(function(){
                   var bodyText = document.querySelectorAll('body')[0].innerText,
                   proxyRegex = /\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b:\d{2,5}/g,
                   proxies = bodyText.match(proxyRegex);
                   return proxies;
                 }, function(err,result){
-                  console.log(result);
-                  checkProxyQueue.push(result);
+                  //console.log(result);
+                  if (!err && result) {
+                    checkProxyQueue.push(result);
+                  };
                   callback();
                   ph.exit();
                 });
