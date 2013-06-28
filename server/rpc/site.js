@@ -31,7 +31,8 @@ exports.actions = function(req,res,ss) {
                 url: siteSubmit.url,
                 pageParam: siteSubmit.pageParam,
                 maxPage: siteSubmit.maxPage,
-                pageSuffix: siteSubmit.pageSuffix
+                pageSuffix: siteSubmit.pageSuffix,
+                useProxy: siteSubmit.useProxy
               });
               newsite.save(function(error) {
                 if (error == null) {
@@ -61,7 +62,8 @@ exports.actions = function(req,res,ss) {
               site.url= siteSubmit.url;
               site.pageParam= siteSubmit.pageParam;
               site.maxPage= siteSubmit.maxPage;
-              pageSuffix: siteSubmit.pageSuffix;
+              site.pageSuffix= siteSubmit.pageSuffix;
+              site.useProxy= siteSubmit.useProxy;
                 // Save it
                 site.save(function(error) {
                   if (error == null) {
@@ -86,12 +88,22 @@ exports.actions = function(req,res,ss) {
         return res(false);
       });
     },
-    run: function(name){
-      var currentSite;
+    run: function(name, isTest){
+      var currentSite,
+      allProxies = [], processedPage=0;
 
       // Get Proxy from a page
       var getProxyQueue = async.queue(function (siteurl, callback) {
-        console.log('Processing: '+siteurl);
+        var useProxy, proxyConfig, params;
+        if (allProxies.length) {
+          useProxy = allProxies[Math.floor(Math.random() * allProxies.length)];
+          proxyConfig = useProxy.ip+':'+useProxy.port;
+          params = {
+            'proxy': proxyConfig
+          }
+        };
+        console.log('Processing: '+siteurl+' through proxy: '+proxyConfig);
+        processedPage++;
         phantom.create(function(err,ph) {
           ph.createPage(function(err,page) {
             // page.set('settings',{'userAgent':'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36'}, function(err){
@@ -109,34 +121,47 @@ exports.actions = function(req,res,ss) {
                 matches = bodyText.match(proxyRegex);
                 return matches;
               }, function(err,result){
-                if (!err && result) {
-                  var proxyRegex = /(\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b)([\t|\s|:]+)(\d{2,5})/g;
-                  for (var i = result.length - 1; i >= 0; i--) {
-                    var proxy = proxyRegex.exec(result[i]);
-                    if (proxy) {
-                      checkProxyQueue.push({'ip':proxy[1],'port':proxy[3]});
+                if (isTest) {
+                  console.log(result);
+                } else {
+                  if (!err && result) {
+                    console.log('Got '+result.length+' proxies from '+siteurl);
+                    var proxyRegex = /(\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b)([\t|\s|:]+)(\d{2,5})/g;
+                    for (var i = result.length - 1; i >= 0; i--) {
+                      var proxy = proxyRegex.exec(result[i]);
+                      if (proxy) {
+                        checkProxyQueue.push({'ip':proxy[1],'port':proxy[3]});
+                      };
                     };
                   };
-                };
+                }
                 callback();
                 ph.exit();
               });
             });
           });
-        });
+        }, {parameters:params});
       }, 5);
       // Finish scrape all pages
       getProxyQueue.drain = function() {
-        ss.publish.all('message','success','Site Manager', 'Site scraper run successfully, checking proxy!');
+        if (processedPage > currentSite.maxPage) {
+          ss.publish.all('message','success','Site Manager', 'Site scraper run successfully, checking proxy!');
+          if (isTest) {
+            currentSite.isRunning = false;
+            currentSite.save();
+          };
+        } else {
+          ss.publish.all('message','success','Site Manager', 'Page Drain!');
+        };
       }
 
       // Check Proxy Queue
       var checkProxyQueue = async.queue(function (proxy, callback) {
-        console.log('Processing: '+proxy.ip+':'+proxy.port);
+        // console.log('Processing: '+proxy.ip+':'+proxy.port);
         var ipRegex = /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/;
         exec('curl --proxy ' + proxy.ip + ':'+ proxy.port + ' http://checkip.dyndns.org/',{timeout:5000}, function(err, stdout, stderr) {
           if (stdout && ipRegex.exec(stdout) && ipRegex.exec(stdout).shift()==proxy.ip) {
-            console.log(proxy.ip.green);
+            console.log('Alive proxy: '+proxy.ip.green);
             // Check If Proxy exist, if not, save it
             Proxy.findOne({ip:proxy.ip})
             .exec(function(error, oldproxy){
@@ -150,21 +175,25 @@ exports.actions = function(req,res,ss) {
               };
             });
           } else {
-            console.log(proxy.ip.red);
+            // console.log(proxy.ip.red);
           }
           callback();
         });
       }, 50);
       checkProxyQueue.drain = function() {
-        currentSite.isRunning = false;
-        currentSite.save();
-        ss.publish.all('message','success','Site Manager', 'Proxy checking done, all proxy saved.');
+        if (processedPage > currentSite.maxPage) {
+          currentSite.isRunning = false;
+          currentSite.save();
+          ss.publish.all('message','success','Site Manager', 'Proxy checking done, all proxy saved.');
+        } else {
+          ss.publish.all('message','success','Site Manager', 'Proxies Drain!');
+        };
       }
 
       async.waterfall([
-        // Check if any site is running
+        // Check if current site is running
         function(callback){
-          Site.findOne({isRunning:true},function(error,site){
+          Site.findOne({name:name, isRunning:true},function(error,site){
             callback(error, site);
           });
         },
@@ -181,6 +210,17 @@ exports.actions = function(req,res,ss) {
             callback(error, site);
           });
         },
+        // Get all proxies
+        function(site,callback){
+          if (site.useProxy) {
+            Proxy.find(function(error,proxies){
+              allProxies = proxies;
+              callback(error,site);
+            });
+          } else {
+            callback(null,site);
+          };
+        },
         // Update lastRun
         function(site, callback){
           site.lastRun = Date.now();
@@ -193,7 +233,7 @@ exports.actions = function(req,res,ss) {
       function (error, site) {
         if (!error) {
           currentSite = site;
-          for (var i = 0; i < site.maxPage; i++) {
+          for (var i = 0; i <= site.maxPage; i++) {
             getProxyQueue.push(site.url+site.pageParam+i+site.pageSuffix);
           };
           ss.publish.all('message','success','Site Manager', 'Site scraper started');

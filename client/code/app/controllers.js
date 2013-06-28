@@ -114,8 +114,8 @@ angular.module('exampleApp', ['ssAngular'])
       $location.path('/site');
     };
 
-    $scope.run = function(index){
-      rpc('site.run',$scope.sites[index].name);
+    $scope.run = function(index, isTest){
+      rpc('site.run',$scope.sites[index].name, isTest);
     };
   }])
 // This one is copied from original ss-angular example, check the docs
