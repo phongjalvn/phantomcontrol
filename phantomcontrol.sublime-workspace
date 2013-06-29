@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"querysel",
+				"querySelectorAll	jsDOM"
+			],
+			[
+				"for",
+				"for	for (…) {…} (Improved Native For-Loop)"
+			],
+			[
 				"querySelector",
 				"querySelectorAll	jsDOM"
 			],
@@ -14,10 +22,6 @@
 			[
 				"Google",
 				"GoogleLink"
-			],
-			[
-				"for",
-				"for	for (…) {…}"
 			],
 			[
 				"req",
@@ -172,22 +176,54 @@
 	"buffers":
 	[
 		{
+			"file": "server/model/site.js",
+			"settings":
+			{
+				"buffer_size": 498,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "server/rpc/site.js",
 			"settings":
 			{
-				"buffer_size": 7661,
+				"buffer_size": 9937,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/templates/sitenew.html",
+			"settings":
+			{
+				"buffer_size": 2854,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/templates/siteedit.html",
+			"settings":
+			{
+				"buffer_size": 2868,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/code/app/controllers.js",
+			"settings":
+			{
+				"buffer_size": 5278,
+				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 196.0,
 		"selected_items":
 		[
 			[
-				"com",
+				"commi",
 				"Git: Commit"
 			],
 			[
@@ -195,8 +231,32 @@
 				"Git: Add..."
 			],
 			[
+				"comm",
+				"Git: Commit"
+			],
+			[
+				"com",
+				"Git: Commit"
+			],
+			[
+				"en",
+				"Package Control: Enable Package"
+			],
+			[
 				"git",
 				"Git: Commit"
+			],
+			[
+				"ad",
+				"Git: Add..."
+			],
+			[
+				"sa",
+				"File: Save All"
+			],
+			[
+				"sav",
+				"File: Save All"
 			],
 			[
 				"git ad",
@@ -204,10 +264,6 @@
 			],
 			[
 				"commit",
-				"Git: Commit"
-			],
-			[
-				"comm",
 				"Git: Commit"
 			],
 			[
@@ -225,14 +281,6 @@
 			[
 				"in",
 				"Package Control: Install Package"
-			],
-			[
-				"sa",
-				"Project: Save As"
-			],
-			[
-				"en",
-				"Package Control: Enable Package"
 			],
 			[
 				"ena",
@@ -348,25 +396,26 @@
 	},
 	"file_history":
 	[
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/app.less",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/sitemanager.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/app/controllers.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/site.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/siteedit.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/site.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/sitenew.html",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/sites.js",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/useredit.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/users.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/user.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/auth.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/site.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/.gitignore",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/app/controllers.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/sitenew.html",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/siteedit.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/proxy.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/sitemanager.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/proxy.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/status.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/serverstatus.html",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/sites.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/google.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/app/app.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/user.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/useredit.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/usermanager.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/usernew.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/sidebar.html",
@@ -400,7 +449,6 @@
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/views/index.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/libs/2.jquery/1.selectivizr.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/libs/1.angular/angular.min.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/app.less",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/googlelink.js",
 		"/C/Users/phong/AppData/Local/Temp/fz3temp-2/footer.php",
 		"/C/Users/phong/Documents/GitHub/express-upload-progress/app.js",
@@ -500,6 +548,12 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"useRegEx",
+			"}\n",
+			"useRegEx",
+			"useReg",
+			"Use Splitter",
+			"useSpliter",
 			"create",
 			"submitsite",
 			"current",
@@ -621,13 +675,7 @@
 			"\\|",
 			"|",
 			"green",
-			"$i",
-			"$i++",
-			"$i",
-			"green",
-			"#register",
-			"register",
-			"trim"
+			"$i"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -635,6 +683,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"useProxy",
+			"Use RegEx",
+			"useRegEx",
 			"siteSubmit",
 			"ng-model=\"site.",
 			"site",
@@ -759,10 +810,7 @@
 			"NEWLIFE",
 			"newlife",
 			"VietPro",
-			"ietpro",
-			"vietpro",
-			"vierpro-",
-			"vietpro"
+			"ietpro"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -773,23 +821,23 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "server/rpc/site.js",
+					"file": "server/model/site.js",
 					"settings":
 					{
-						"buffer_size": 7661,
+						"buffer_size": 498,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4016,
-								4016
+								223,
+								223
 							]
 						],
 						"settings":
@@ -802,7 +850,129 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1620.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "server/rpc/site.js",
+					"settings":
+					{
+						"buffer_size": 9937,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								259,
+								259
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "client/templates/sitenew.html",
+					"settings":
+					{
+						"buffer_size": 2854,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2110,
+								2119
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 437.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "client/templates/siteedit.html",
+					"settings":
+					{
+						"buffer_size": 2868,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2292,
+								2292
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 437.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "client/code/app/controllers.js",
+					"settings":
+					{
+						"buffer_size": 5278,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4501,
+								4501
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1487.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
