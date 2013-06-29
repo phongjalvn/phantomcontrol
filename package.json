@@ -8,16 +8,16 @@
     "node": ">= 0.6.0"
   },
   "dependencies": {
-    "google": "~0.3.0",
     "mongoose": "~3.6.11",
     "socketstream": "0.3.x",
     "ss-less": "~0.1.1",
     "ss-angular": "latest",
-    "request": "~2.21.0",
     "colors": "~0.6.0-1",
     "coffee-script": "~1.6.3",
-    "memstream": "0.0.1",
-    "cheerio": "~0.12.0"
+    "async": "latest",
+    "node-phantom-ws": "latest",
+    "password-hash": "latest",
+    "later": "~1.0.1"
   },
   "scripts": {
     "start": "node app.js"
