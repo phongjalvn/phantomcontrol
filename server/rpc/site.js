@@ -8,6 +8,73 @@ exports.actions = function(req,res,ss) {
   Proxy = require('../model/proxy').Proxy;
   req.use('session');
   req.use('client.auth');
+  // Private functions
+  var checkAliveProxy = function(proxy, callback){
+    var ipRegex = /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/;
+    exec('curl --proxy ' + proxy.ip + ':'+ proxy.port + ' http://checkip.dyndns.org/',{timeout:5000}, function(err, stdout, stderr) {
+      if (stdout && ipRegex.exec(stdout) && ipRegex.exec(stdout).shift()==proxy.ip) {
+        callback(null,proxy);
+      } else {
+        callback('Dead Proxy',proxy);
+      }
+    });
+  };
+  var randomProxy = function(proxies, callback){
+    var proxy = proxies[Math.floor(Math.random() * proxies.length)];
+    checkAliveProxy(proxy, function(error, reproxy){
+      if (!error) {
+        callback(reproxy);
+      } else {
+        randomProxy(proxies, callback);
+      };
+    });
+  };
+  var phantomRunner = function(siteurl, params, callback){
+    phantom.create(function(err,ph) {
+      ph.createPage(function(err,page) {
+        // page.set('settings',{'userAgent':'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36'}, function(err){
+        //   if (!err) {
+        //   };
+        // });
+        page.open(siteurl, function(err,status){
+          console.log("opened site? ", status);
+          // If fail, add it to the queue again
+          if (status=='fail') {
+            getProxyQueue.push(siteurl);
+          };
+          // Super Phantom Hero appear
+          page.evaluate(function(){
+            // This scope only run on Phantom
+            var bodyText = document.querySelectorAll('body')[0].innerText,
+            proxyRegex = /(\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b)([\t|\s|:]+)(\d{2,5})/g,
+            matches = bodyText.match(proxyRegex);
+            return matches;
+          }, function(err,result){
+            if (isTest) {
+              console.log(result);
+            } else {
+              if (!err && result) {
+                console.log('Got '+result.length+' proxies from '+siteurl);
+                var proxyRegex = /(\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b)([\t|\s|:]+)(\d{2,5})/g;
+                for (var i = result.length - 1; i >= 0; i--) {
+                  var proxy = proxyRegex.exec(result[i]);
+                  if (proxy) {
+                    checkProxyQueue.push({'ip':proxy[1],'port':proxy[3]});
+                  };
+                };
+              };
+            }
+            callback();
+            ph.exit();
+          });
+          // End page.evaluate
+        });
+        // End page.open
+      });
+      // End createPage
+    }, {parameters:params});
+    // End phantom.create
+  };
   return {
     get: function(name){
       Site.findOne({
@@ -91,68 +158,7 @@ exports.actions = function(req,res,ss) {
     run: function(name, isTest){
       var currentSite,
       allProxies = [], processedPage = 0;
-      var checkAliveProxy = function(proxy, callback){
-        var ipRegex = /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/;
-        exec('curl --proxy ' + proxy.ip + ':'+ proxy.port + ' http://checkip.dyndns.org/',{timeout:5000}, function(err, stdout, stderr) {
-          if (stdout && ipRegex.exec(stdout) && ipRegex.exec(stdout).shift()==proxy.ip) {
-            callback(null,proxy);
-          } else {
-            callback('Dead Proxy',proxy);
-          }
-        });
-      };
-      var randomProxy = function(proxies, callback){
-        var proxy = proxies[Math.floor(Math.random() * proxies.length)];
-        checkAliveProxy(proxy, function(error, reproxy){
-          if (!error) {
-            callback(reproxy);
-          } else {
-            randomProxy(proxies, callback);
-          };
-        });
-      };
-      var phantomRunner = function(siteurl, params, callback){
-        phantom.create(function(err,ph) {
-          ph.createPage(function(err,page) {
-            // page.set('settings',{'userAgent':'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36'}, function(err){
-            //   if (!err) {
-            //   };
-            // });
-            page.open(siteurl, function(err,status){
-              console.log("opened site? ", status);
-              // If fail, add it to the queue again
-              if (status=='fail') {
-                getProxyQueue.push(siteurl);
-              };
-              // Super Phantom Hero appear
-              page.evaluate(function(){
-                // This scope only run on Phantom
-                var bodyText = document.querySelectorAll('body')[0].innerText,
-                proxyRegex = /(\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b)([\t|\s|:]+)(\d{2,5})/g,
-                matches = bodyText.match(proxyRegex);
-                return matches;
-              }, function(err,result){
-                if (isTest) {
-                  console.log(result);
-                } else {
-                  if (!err && result) {
-                    console.log('Got '+result.length+' proxies from '+siteurl);
-                    var proxyRegex = /(\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b)([\t|\s|:]+)(\d{2,5})/g;
-                    for (var i = result.length - 1; i >= 0; i--) {
-                      var proxy = proxyRegex.exec(result[i]);
-                      if (proxy) {
-                        checkProxyQueue.push({'ip':proxy[1],'port':proxy[3]});
-                      };
-                    };
-                  };
-                }
-                callback();
-                ph.exit();
-              });
-            });
-          });
-        }, {parameters:params});
-      }
+
       // Get Proxy from a page
       var getProxyQueue = async.queue(function (siteurl, callback) {
         var useProxy, proxyConfig, params;

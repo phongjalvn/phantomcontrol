@@ -187,7 +187,7 @@
 			"file": "server/rpc/site.js",
 			"settings":
 			{
-				"buffer_size": 9937,
+				"buffer_size": 9820,
 				"line_ending": "Windows"
 			}
 		},
@@ -219,11 +219,11 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 196.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
-				"commi",
+				"com",
 				"Git: Commit"
 			],
 			[
@@ -231,11 +231,11 @@
 				"Git: Add..."
 			],
 			[
-				"comm",
+				"commi",
 				"Git: Commit"
 			],
 			[
-				"com",
+				"comm",
 				"Git: Commit"
 			],
 			[
@@ -396,6 +396,8 @@
 	},
 	"file_history":
 	[
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/package.json",
+		"/C/Users/phong/Documents/GitHub/phantomcontrol/.gitignore",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/app.less",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/sitemanager.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/app/controllers.js",
@@ -408,7 +410,6 @@
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/users.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/user.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/auth.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/.gitignore",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/proxy.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/proxy.js",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/model/status.js",
@@ -454,7 +455,6 @@
 		"/C/Users/phong/Documents/GitHub/express-upload-progress/app.js",
 		"/C/Users/phong/Documents/GitHub/ggcp/server/models/googlelink.coffee",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/server/rpc/users.js",
-		"/C/Users/phong/Documents/GitHub/phantomcontrol/package.json",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/templates/header.html",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/css/settings.less",
 		"/C/Users/phong/Documents/GitHub/phantomcontrol/client/code/libs/2.angular/angular.min.js",
@@ -531,7 +531,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"",
@@ -836,8 +836,8 @@
 						"selection":
 						[
 							[
-								223,
-								223
+								325,
+								325
 							]
 						],
 						"settings":
@@ -860,15 +860,15 @@
 					"file": "server/rpc/site.js",
 					"settings":
 					{
-						"buffer_size": 9937,
+						"buffer_size": 9820,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								259,
-								259
+								2519,
+								2519
 							]
 						],
 						"settings":
@@ -881,7 +881,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 441.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
