@@ -1,8 +1,8 @@
 {
   "name": "phantomcontrol",
-  "description": "An awesome real time application",
+  "description": "Real time Phantom Dashboard",
   "version": "0.0.1",
-  "author": "Me <me@mydomain.com>",
+  "author": "phongjalvn <phongjalvn@gmail.com>",
   "private": true,
   "engines": {
     "node": ">= 0.6.0"

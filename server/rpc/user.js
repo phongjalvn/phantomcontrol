@@ -1,106 +1,104 @@
-exports.actions = function(req,res,ss) {
-	var User;
-  req.use('session');
-  req.use('client.auth');
-  User = require('../model/user').User,
-  passwordHash = require('password-hash');
-	return {
-    getCurrentUser: function(){
-      if(req.session.userId) {
-        return res(req.session.userId);
-      }
-      ss.publish.all('message','danger','User Manager', 'Error when getting current user');
-      return res(false);
-    },
-    getName: function(userId){
-      var uid = userId || req.session.userId;
-      if(uid) {
-        User.findOne({
-          userId:uid
-        },function(error,user){
-          if (error == null) {
-            if (user != null) {
-              return res(user.displayname);
-            } else {
-              ss.publish.all('message','danger','User Manager', 'Error when getting displayname');
-              return res(false);
+exports.actions = function (req, res, ss) {
+    var User = require('../model/user').User,
+        passwordHash = require('password-hash');
+    req.use('session');
+    req.use('client.auth');
+    return {
+        getCurrentUser: function () {
+            if (req.session.userId) {
+                return res(req.session.userId);
             }
-          }
-        });
-      }
-    },
-    createUser: function(username, password, password2, displayname) {
-      if ((req.session != null) && (req.session.userId != null)) {
-        if (username && password && password2 && displayname && password==password2) {
-          return User.findOne({
-            userId: username
-          }, function(error, user) {
-            if (error == null) {
-              if (user == null) {
-                var newuser = new User();
-                newuser.userId = username;
-                newuser.password = passwordHash.generate(password);
-                newuser.displayname = displayname;
-                return newuser.save(function(error) {
-                  if (error == null) {
-                    ss.publish.all('message','success','User Manager', 'Created user');
-                    return res(true);
-                  }
+            ss.publish.all('message', 'danger', 'User Manager', 'Error when getting current user');
+            return res(false);
+        },
+        getName: function (userId) {
+            var uid = userId || req.session.userId;
+            if (uid) {
+                User.findOne({
+                    userId: uid
+                }, function (error, user) {
+                    if (error == null) {
+                        if (user != null) {
+                            res(user.displayname);
+                        } else {
+                            ss.publish.all('message', 'danger', 'User Manager', 'Error when getting displayname');
+                            res(false);
+                        }
+                    }
                 });
-              } else {
-                ss.publish.all('message','danger','User Manager', 'User already exist!');
-                return res(false);
-              }
             }
-          });
-        }
-      }
-      ss.publish.all('message','danger','User Manager', 'Error when create user');
-      return res(false);
-    },
-    updateUser: function(username, password, password2, displayname) {
-      if ((req.session != null) && (req.session.userId != null)) {
-        // username is only required
-        if (username) {
-          return User.findOne({
-            userId: username
-          }, function(error, user) {
-            var _this = this;
-            if (error == null) {
-              if (user != null) {
-                // Update displayname
-                if (displayname) {
-                  user.displayname = displayname;
-                };
-                // Update password
-                if (password && password == password2) {
-                  user.password = passwordHash.generate(password);
-                };
-                
-                // Save it
-                return user.save(function(error) {
-                  if (error == null) {
-                    ss.publish.all('message','success','User Manager', 'Updated user');
-                    return res(true);
-                  }
-                });
-              }
+        },
+        createUser: function (username, password, password2, displayname) {
+            if ((req.session != null) && (req.session.userId != null)) {
+                if (username && password && password2 && displayname && password == password2) {
+                    User.findOne({
+                        userId: username
+                    }, function (error, user) {
+                        if (error == null) {
+                            if (user == null) {
+                                var newuser = new User();
+                                newuser.userId = username;
+                                newuser.password = passwordHash.generate(password);
+                                newuser.displayname = displayname;
+                                newuser.save(function (error) {
+                                    if (error == null) {
+                                        ss.publish.all('message', 'success', 'User Manager', 'Created user');
+                                        res(true);
+                                    }
+                                });
+                            } else {
+                                ss.publish.all('message', 'danger', 'User Manager', 'User already exist!');
+                                res(false);
+                            }
+                        }
+                    });
+                }
             }
-          });
+            ss.publish.all('message', 'danger', 'User Manager', 'Error when create user');
+            res(false);
+        },
+        updateUser: function (username, password, password2, displayname) {
+            if ((req.session != null) && (req.session.userId != null)) {
+                // username is only required
+                if (username) {
+                    User.findOne({
+                        userId: username
+                    }, function (error, user) {
+                        if (error == null) {
+                            if (user != null) {
+                                // Update displayname
+                                if (displayname) {
+                                    user.displayname = displayname;
+                                }
+                                // Update password
+                                if (password && password == password2) {
+                                    user.password = passwordHash.generate(password);
+                                }
+
+                                // Save it
+                                user.save(function (error) {
+                                    if (error == null) {
+                                        ss.publish.all('message', 'success', 'User Manager', 'Updated user');
+                                        res(true);
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+            ss.publish.all('danger', 'User Manager', 'Error when update user');
+            res(false);
+        },
+        deleteUser: function (userId) {
+            User.findOneAndRemove({userId: userId}, function (error) {
+                if (!error) {
+                    ss.publish.all('message', 'success', 'User Manager', 'Deleted user');
+                    res('Deleted user');
+                }
+                ss.publish.all('message', 'danger', 'User Manager', 'Error when delete user');
+                res(false);
+            });
         }
-      }
-      ss.publish.all('danger','User Manager', 'Error when update user');
-      return res(false);
-    },
-    deleteUser: function(userId){
-      User.findOneAndRemove({userId: userId}, function(error){
-        if (!error) {
-          ss.publish.all('message','success','User Manager', 'Deleted user');
-          return res('Deleted user');
-        }
-        ss.publish.all('message','danger','User Manager', 'Error when delete user');
-        return res(false);
-      });
     }
-	}
-}
+};
