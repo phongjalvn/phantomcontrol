@@ -187,7 +187,7 @@
 			"file": "server/rpc/site.js",
 			"settings":
 			{
-				"buffer_size": 9820,
+				"buffer_size": 12977,
 				"line_ending": "Windows"
 			}
 		},
@@ -211,7 +211,7 @@
 			"file": "client/code/app/controllers.js",
 			"settings":
 			{
-				"buffer_size": 5278,
+				"buffer_size": 6891,
 				"line_ending": "Unix"
 			}
 		}
@@ -860,15 +860,15 @@
 					"file": "server/rpc/site.js",
 					"settings":
 					{
-						"buffer_size": 9820,
+						"buffer_size": 12977,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2519,
-								2519
+								1414,
+								1414
 							]
 						],
 						"settings":
@@ -877,7 +877,7 @@
 							"remote_loading": false,
 							"synced": false,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -951,15 +951,15 @@
 					"file": "client/code/app/controllers.js",
 					"settings":
 					{
-						"buffer_size": 5278,
+						"buffer_size": 6891,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4501,
-								4501
+								0,
+								0
 							]
 						],
 						"settings":
@@ -968,7 +968,7 @@
 							"remote_loading": false,
 							"synced": false,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -1281,6 +1281,10 @@
 		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"vis",
+				"/C/xampp/htdocs/vision/vision.sublime-project"
+			],
 			[
 				"visi",
 				"/C/xampp/htdocs/vision/vision.sublime-project"
